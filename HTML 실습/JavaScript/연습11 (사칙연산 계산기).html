@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function plus() {
+		var val1 = parseInt(txtNum1.value);
+		var val2 = parseInt(txtNum2.value);
+	    var result1 = val1 + val2;
+		txtNum3.value = result1;
+	}
+	function minus() {
+		var val1 = parseInt(txtNum1.value);
+		var val2 = parseInt(txtNum2.value);
+	    var result1 = val1 - val2;
+		txtNum3.value = result1;
+	}
+	function multi() {
+		var val1 = parseInt(txtNum1.value);
+		var val2 = parseInt(txtNum2.value);
+	    var result1 = val1 * val2;
+		txtNum3.value = result1;
+	}
+	function divide() {
+		var val1 = parseInt(txtNum1.value);
+		var val2 = parseInt(txtNum2.value);
+	    var result1 = val1 / val2;
+		txtNum3.value = result1;
+	}
+  </script>
+ </head>
+ <body>
+  <input type="number" id="txtNum1">
+  <input type="number" id="txtNum2">
+  <hr/>
+  <button onclick="plus()"> + </button>
+  <button onclick="minus()"> - </button>
+  <button onclick="multi()"> * </button>
+  <button onclick="divide()"> / </button>
+  <hr/>
+  <input type="number" id="txtNum3">
+ </body>
+</html>

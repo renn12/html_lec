@@ -1,0 +1,1011 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE>Á¤±Ô½Ä</TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="Á¤±Ô½Ä,Javascript,¹®¹ý">
+  <META NAME="Description" CONTENT="">
+
+  <SCRIPT LANGUAGE="JavaScript">
+  <!--
+    var tagColor = [];
+    tagColor.push([/\b(function)\b/g, "#6633FF" ]);
+    tagColor.push([/\b(String)\b/g, "#FF0000" ]);
+    tagColor.push([/\b(document)\b/g, "#FF0000" ]);
+    tagColor.push([/\b(return)\b/g, "#CC00CC" ]);
+    tagColor.push([/\b(var)\b/g, "#FF3399" ]);
+    tagColor.push([/\b(if)\b/g, "#6699CC" ]);
+    tagColor.push([/\b(else)\b/g, "#6699CC" ]);
+    tagColor.push([/\s+(\w+)\s*\(/g, "#00FF66" ]);
+
+    var cnt = 0;
+    function colorful(object){
+        var inner = object.innerHTML;
+        inner = inner.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;").replace(/ /g, "&nbsp;").replace(/\n/g, "<br>\n");
+        for( cnt=0; cnt < tagColor.length; cnt++){
+            inner = inner.replace(tagColor[cnt][0], function (str, p1){
+                return str.replace(p1, "<font color = '" + tagColor[cnt][1] + "'>" + p1 + "</font>");
+            });
+        }
+        var newDiv = document.createElement("div");
+        newDiv.id = object.id;
+        newDiv.innerHTML = inner;
+        object.parentElement.insertBefore(newDiv, object);
+        object.parentElement.removeChild(object);
+    }
+
+    function XMPColor(){
+        var xmps = document.getElementsByTagName("XMP");
+        while( xmps.length > 0 ){
+            colorful(xmps[0]);
+        }
+    }
+    /*
+    * checkReg ÇÔ¼ö¸¦ È£ÃâÇÏ¿© °á°ú¸¦ È­¸é¿¡ »Ñ¸°´Ù.
+    */
+    function writeExample(re, tests){
+        document.write(checkReg(re,tests));
+    }
+
+    /*
+    * (Á¤±Ô½Ä, Ã¼Å©ÇÒ ½ºÆ®¸µ array)
+    * Á¤±Ô½ÄÀ» »Ñ·ÁÁÖ°í, arrayÀÇ elementµéÀ» ÀÔ·Â¹ÞÀº Á¤±Ô½Ä¿¡ ÀûÇÕÇÑÁö ÆÇ´ÜÇÏ¿©
+    * °á°ú¸¦ StringÀ¸·Î µ¹·ÁÁØ´Ù.
+    */
+    function checkReg(re, tests){
+        var res = "<b>" + re.toString() +"</b>";
+        res += "<UL>";
+        for (var i=0; i< tests.length; i++){
+            var result ="";
+            if (re.test(tests[i])){
+                result = tests[i].replace(re, function (str){ 
+                        return "<span style=\"background-color:#00ff66;\"><b>" + str  + "</b></span>";
+                    } ) + "<font color=\"green\"><b>¨â</b></font>";
+                var remembered = re.exec(tests[i]);
+                if (remembered != null && remembered.length > 1){
+                    for (var j=1; j< remembered.length; j++){
+                        result += "<br>" + j +"th :"+ remembered[j]; 
+                    }
+                }
+            }else{
+                result = tests[i] + "<font color=\"red\"><i>¨Õ</i></font>";
+            }
+            res +="<LI>"+ result + "<br>";
+        }
+        res +="</UL>";
+        return res;
+    }
+  //-->
+  </SCRIPT>
+ </HEAD>
+
+ <BODY onload="XMPColor()">
+
+ 
+
+
+<H1>Â÷·Ê</H1>
+<UL>
+    <LI><a href="#chap01">1. Á¤±Ô½ÄÀÌ¶õ?</a>
+    <LI><a href="#chap02">2. Á¤±Ô½Ä ¸¸µé±â</a>
+    <LI><a href="#chap03">3. Á¤±Ô½Ä Ç¥Çö¹ý</a>
+    <LI><a href="#chap04">4. Á¤±Ô½Ä »ç¿ë ¿¹Á¦</a>
+    <LI><a href="#chap05">5. Javascript Á¤±Ô½Ä ÇÔ¼ö</a>
+    <LI><a href="#chap06">6. Á¤±Ô½ÄÀ¸·Î ¸¸µç À¯¿ëÇÑ Javascript ÇÔ¼ö</a>
+    <LI><a href="#chap07">7. Java Á¤±Ô½Ä ÇÔ¼ö</a>
+</UL>
+
+ <a name="chap01"><H1>1. Á¤±Ô½ÄÀÌ¶õ?</H1></a>
+    <UL style="font-size:12pt;color:#7777FF">
+        <LI>StringÀÇ <b><font color="#FF0000">°Ë»ö</font></b>, <b><font color="#FF0000">Ä¡È¯</font></b>, <b><font color="#FF0000">ÃßÃâ</font></b>À» À§ÇÑ ÆÐÅÏ.
+        <LI>¾ð¾îº° »ç¿ë¹ýÀº ´ëµ¿¼ÒÀÌÇÔ.
+        <LI>ÆÐÅÏ¿¹>ÀüÈ­¹øÈ£ Çü½Ä, ÀÌ¸ÞÀÏ Çü½Ä µî.
+    </UL>
+
+
+ <a name="chap02"><H1>2. Á¤±Ô½Ä ¸¸µé±â</H1></a>
+ <OL style="font-size:14pt;color:#6666FF">
+    <LI>Javascript
+    <UL style="font-size:12pt;color:#7777FF">
+        <LI><div style="background-color:#FFFFCC">var regexp = <i>/pattern/[flags]</i> ;<br>
+        var test = regexp.test(<i>to be checked</i>)</div>
+        <LI><div style="background-color:#CCFFFF">var regexp = new RegExp(<i>"pattern"[, "flags"]</i>);<br>
+        var test = regexp.test(<i>to be checked</i>) </div>
+        <LI>flags for javascript
+        <UL style="font-size:12pt;color:#7777FF">
+            <LI>g : global match, ÀÏ¹ÝÀûÀ¸·Î ÆÐÅÏÀÌ 1¹ø¸¸ ¹ß°ßµÇ¸é Ã£±â¸¦ Á¾·áÇÏÁö¸¸, g flag°¡ ÀÖÀ¸¸é, ¹®ÀÚ¿­ ³»¿¡¼­ ¸ðµç ÆÐÅÏÀ» Ã£´Â´Ù.
+            <LI>i : ignore case, ´ë¼Ò¹®ÀÚ¸¦ °í·ÁÇÏÁö ¾Ê°í Ã¼Å©ÇÑ´Ù.[a-z]¿Í [A-Z]´Â °°Àº Ç¥ÇöÀÌ µÈ´Ù.
+            <LI>m : match over multiple lines, ¿©·¯ ÁÙ¿¡ °ÉÃÄ Ã¼Å©¸¦ ÇÑ´Ù.
+        </UL>
+    </UL>
+    <LI>Java
+    <UL style="font-size:12pt;color:#7777FF">
+        <LI>java.util.regex package
+        <LI><div style="background-color:#FFFFCC">Pattern p = Pattern.compile(<i>"pattern"</i>); <br>
+            Matcher m = p.matcher(<i>"string to be checked"</i>); <br>
+            boolean b = m.matches();</div>
+        <LI><div style="background-color:#CCFFFF">
+        boolean b = Pattern.matches(<i>"pattern"</i>, <i>"string to be checked"</i>);</div>
+    </UL>
+ </OL>
+
+
+ <a name="chap03"><H1>3. Á¤±Ô½Ä Ç¥Çö¹ý</H1></a>
+ *<font color="green"><b>¨â</b></font>´Â valid, <font color="red"><i>¨Õ</i></font>´Â invalid<br>
+ *Çü±¤ ÃÊ·Ï ¹ÙÅÁ ºÎºÐÀº ¸ÅÄªµÇ´Â ºÎºÐ.<br>
+ *¿¹Á¦´Â javascript ±âÁØÀÌ¸ç, ¾ð¾î¿¡ µû¶ó ´Ù¼Ò Â÷ÀÌ°¡ ¹ß»ýÇÒ ¼ö ÀÖ´Ù.
+  <TABLE width=1024 border=0 CELLPADDING="5" CELLSPACING="1" BGCOLOR="#CCCCCC">
+  <TR bgcolor="#DDDDDD">
+    <TH width=50>¹®ÀÚ</TH>
+    <TH width=300>¿ëµµ</TH>
+    <TH width=426>¿¹Á¦</TH>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\</TD>
+    <TD width="300">
+    <UL>
+    <LI>Æ¯¼ö¹®ÀÚ¸¦ ÀÇ¹Ì
+    <LI>Æ¯¼ö¹®ÀÚÀÇ »ç¿ëÀ» Á¦¿Ü(Æ¯¼ö¹®ÀÚ ¾Õ¿¡¼­)
+    </UL>
+    </TD>
+    <TD>
+    <UL>
+        <LI>b´Â b¶ó´Â ±ÛÀÚ¸¦ ÀÇ¹Ì ÇÏÁö¸¸ \b´Â ´Ü¾î °æ°è¸¦ ÀÇ¹Ì
+        <LI>*Àº 0¹øÀÌ»ó ¹Ýº¹ÀÌ¶ó´Â ÀÇ¹ÌÀÌÁö¸¸, \*´Â *ÀÌ¶ó´Â ±ÛÀÚ¸¦ ÀÇ¹Ì.
+    </UL>
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>^</TD>
+    <TD width="300">¹®ÀÚ¿­ÀÇ ½ÃÀÛ. []¾È¿¡¼­´Â notÀÇ ÀÇ¹Ì<br>
+        * ^A´Â "A·Î ½ÃÀÛ"ÀÌ¶ó±â º¸´Ù´Â "½ÃÀÛ Á÷ÈÄ¿¡ A°¡ ³ª¿Â´Ù"´Â ÀÇ¹Ì·Î ÇØ¼®ÇÏ´Â °ÍÀÌ ÁÁ´Ù. Áï, ½ÃÀÛ°ú ³¡°ú °°Àº ºó °ø°£À» ÇÏ³ªÀÇ ¹®ÀÚ·Î °£ÁÖÇÏ´Â °ÍÀÌ ÁÁ´Ù.
+    </TD>
+    <TD>
+    <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^A/g, ["A string", "an A"]);
+        writeExample(/[^A]/g, ["A string", "an A"]);
+    //-->
+    </SCRIPT>
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>$</TD>
+    <TD width="300">¹®ÀÚ¿­ÀÇ ¸¶Áö¸·<br>
+    </TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/t$/, ["eat", "GREAT"]);
+    //-->
+    </SCRIPT>
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>*</TD>
+    <TD width="300">0¹ø ÀÌ»ó ¹Ýº¹</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/ab*d/g, ["ad", "abd", "abdcdeabbbbdedb", "ab" , "axd"]);
+    //-->
+    </SCRIPT>    
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>+</TD>
+    <TD width="300">1¹ø ÀÌ»ó ¹Ýº¹ ( = {1,} )</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/ab+d/g, ["ad", "abd", "abdcdeabbbbdedb", "ab" , "axd"]);
+    //-->
+    </SCRIPT>    
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>?</TD>
+    <TD width="300">0¹ø ÀÌ³ª 1¹ø</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/e?le?/g, ["angel", "angle", "element"]);
+        writeExample(/abc\-?d/g, ["abc-d", "abcd"]);
+    //-->
+    </SCRIPT>    
+
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>.</TD>
+    <TD width="300">new line À» Á¦¿ÜÇÑ ¸ðµç ±ÛÀÚ</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/.n/g, ["nay, an apple is on the tree", "nay"]);
+    //-->
+    </SCRIPT>    
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>(x)</TD>
+    <TD width="300">x¸¦ Ã¼Å©ÇÏ°í Ã¼Å©ÇÑ °ªÀ» º¯¼ö·Î ÀúÀå</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/(f..) (b..)/, ["foo bar"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>(?:x)</TD>
+    <TD width="300">x¸¦ Ã¼Å©ÇÏ°í Ã¼Å©ÇÑ °ªÀ» º¯¼ö·Î ÀúÀåÇÏÁö ¾ÊÀ½</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/(?:f..) (b..)/, ["foo bar", "bar foo"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>x|y</TD>
+    <TD width="300">x ¶Ç´Â y</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/green|red/, ["green apple", "red apple", "yellow apple"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>x(?=y)</TD>
+    <TD width="300">xÈÄ¿¡ y°¡ ³ª¿À°í, xºÎºÐ¸¸ ¸ÅÄªµÇ´Â ºÎºÐÀ¸·Î °£ÁÖ</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/blah(?=soft|hard)/, ["blahsoft", "blahhard", "blah soft"]);
+        writeExample(/blah(?=soft).*/, ["blahsoft", "blahhard", "blah soft"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>x(?!y)</TD>
+    <TD width="300">x°¡ ³ª¿À°í ±× µÚ¿¡ y°¡ ÀÖÀ¸¸é ¾È µÊ</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/blah(?!hard)/, ["blahsoft", "blahhard", "blah soft"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>{n}</TD>
+    <TD width="300">¾Õ¿¡ ÁöÁ¤ÇÑ °ÍÀÌ n°³</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/.{3}/, ["ab", "abc", "abcd", "È«±æµ¿"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>{n,}</TD>
+    <TD width="300">¾Õ¿¡ ÁöÁ¤ÇÑ °ÍÀÌ n°³ ÀÌ»ó</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/.{3,}/, ["ab", "abc", "abcd"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>{n,m}</TD>
+    <TD width="300">¾Õ¿¡ ÁöÁ¤ÇÑ °ÍÀÌ n~m°³</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/.{3,5}/, ["ab", "abc", "abcd", "È«±æµ¿"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>[xyz]</TD>
+    <TD width="300">x³ª y³ª z. []¾È¿¡´Â ¾ó¸¶µçÁö ¾µ ¼ö ÀÖ´Ù.</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/[abc]{2}/, ["ab", "abc", "adbd"]);
+    //-->
+    </SCRIPT>
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>[x-z]</TD>
+    <TD width="300">x¿¡¼­ z±îÁö</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/[a-z]{4,}/g, ["She sells sea shells by the sea shore´Â Very ¾î·Æ´Ù!"]);
+    //-->
+    </SCRIPT>
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>[^xyz]</TD>
+    <TD width="300">x,y,z¸¦ Á¦¿ÜÇÑ ³ª¸ÓÁö ¸ðµç °Í</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/[^a-z]{2,}/g, ["I'm a good man", "I am A good Man"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>[\b]</TD>
+    <TD width="300">¹é½ºÆäÀÌ½º. \b¿Í È¥µ¿ÇÏÁö ¸»°Í.</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/[\b]/g, ["ab\bcd"]);
+    //-->
+    </SCRIPT>
+    ÀÏ¹ÝÀûÀÎ String¿¡¼­´Â \b°¡ ¹é½ºÆäÀÌ½º¸¦ ÀÇ¹ÌÇÑ´Ù.
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\b</TD>
+    <TD width="300">´Ü¾îÀÇ °æ°è.[\b]¿Í È¥µ¿ÇÏÁö ¸»°Í.</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/\bn[a-z]/g, ["I am not a boy", "online", "nope"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\B</TD>
+    <TD width="300">\b ¸¦ Á¦¿ÜÇÑ ÀüºÎ</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/\Bn[a-z]/g, ["noonday", "online", "nope"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\cX</TD>
+    <TD width="300">ÄÁÆ®·ÑX¿Í ¸ÅÄª. \cMÀº ÄÁÆ®·ÑM°ú ¸ÅÄª</TD>
+    <TD></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\d</TD>
+    <TD width="300">¼ýÀÚ.[0-9]¿Í °°À½</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/\d/g, ["7 eight 9", "123"]);
+        writeExample(/^0[0-9]{2}/g, ["0120", "12011"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\D</TD>
+    <TD width="300">\d ¸¦ Á¦¿ÜÇÑ ÀüºÎ</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/\D/g, ["7 eight 9", "12?3" ]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\f</TD>
+    <TD width="300">form-feed</TD>
+    <TD></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\n</TD>
+    <TD width="300">new line</TD>
+    <TD></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\r</TD>
+    <TD width="300">carriage return</TD>
+    <TD></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\s</TD>
+    <TD width="300">white space<BR>ex&gt;ÅÇ, ¶ç¾î¾²±â, \n, \r</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/k\s/g, ["korea", "blank is", "blank"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\S</TD>
+    <TD width="300">\s ¸¦ Á¦¿ÜÇÑ ÀüºÎ</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/k\S/g, ["korea", "blank is"]);
+    //-->
+    </SCRIPT></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\t</TD>
+    <TD width="300">ÅÇ</TD>
+    <TD></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\v</TD>
+    <TD width="300">vertical tab</TD>
+    <TD></TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\w</TD>
+    <TD width="300">¾ËÆÄºª+¼ýÀÚ+_. [A-Za-z0-9_]¿Í µ¿ÀÏ</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/\w/g, ["!@#$%^&*()+_-[]{}\\|\"':;,.<>?/"]);
+    //-->
+    </SCRIPT>
+    </TD>
+  </TR>
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\W</TD>
+    <TD width="300">\w »©°í ÀüºÎ</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/\W/g, ["!@#$%^&*()+_-[]{}\\|\"':;,.<>?/"]);
+    //-->
+    </SCRIPT>
+    </TD>
+  </TR>
+
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\n</TD>
+    <TD width="300">\nÀÌ ÀÚ¿¬¼öÀÏ¶§, ()·Î ÁöÁ¤ÇÑ n¹øÂ° Á¤±Ô½Ä</TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/(.{2})e tru\1 is out \1ere/, ["the truth is out there ..."]);
+    //-->
+    </SCRIPT>
+    (th)°¡ \1·Î ÁöÁ¤µÈ´Ù.
+    </TD>
+  </TR>
+
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\xhh</TD>
+    <TD width="300">hh´Â hexacode, </TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/[\x21-\x40]/g, ["!@#$%^&*()po"]);
+    //-->
+    </SCRIPT>
+    <a href="http://www.utoronto.ca/webdocs/HTMLdocs/NewHTML/iso_table.html" target="_blank">Code table º¸±â</a>
+    </TD>
+  </TR>
+
+  <TR valign="top" bgcolor="#FFFFFF">
+    <TD>\uhhhh</TD>
+    <TD width="300">hhhh´Â hexacode, </TD>
+    <TD><SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/[\u3131-\u3163\uac00-\ud7a3]/g, ["³ª´Â blah Á÷¿øÀÔ´Ï´Ù.¤»¤»"]);
+    //-->
+    </SCRIPT>
+    ÄÚµå ¹øÈ£> 3131:¤¡    3163:¤Ó ac00:°¡    d7a3:ÆR (javascript, java)
+    </TD>
+  </TR>
+  </TABLE>
+<br>
+
+ <a name="chap04"><H1>4. Á¤±Ô½Ä »ç¿ë ¿¹Á¦</H1></a>
+
+  <TABLE width=1024 border=0 CELLPADDING="5" CELLSPACING="1" BGCOLOR="#CCCCCC">
+  <TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^[0-9]/, ["09¾ø´Ù", "100Á¡", "ÁýÀÌ 10Æò"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+
+<TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^\w+$/, ["blahsoft","blah(co)" ,"blah soft"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+<TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^[a-zA-Z][\w\-]{4,11}$/, ["blah2010","blah-2010!", "2010blah", "ILikegoooooooooooooooooogle"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+
+<TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/, ["02-6288-2114", "031-779-7114", "12-1234-5678", "02-6288-2114545", "02-0288-2114"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+<TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^0\d{1,2}-[1-9]\d{2,3}-\d{4}$/, ["02-6288-2114", "031-779-7114", "12-1234-5678" , "02-2123-12314545", "02-0288-2114"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+
+<TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^[\.a-zA-Z0-9\-]+\.[a-zA-Z]{2,}/, ["r-d.blah.co.kr","r-d.blah.co.krÀÔ´Ï´Ù.", "blah..co.kr", "a.com"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+<TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^(?:[\w\-]{2,}\.)+[a-zA-Z]{2,}$/, ["r-d.blah.co.kr","r-d.blah.co.krÀÔ´Ï´Ù." ,"blah..co.kr", "a.com"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+
+<TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^[_a-zA-Z0-9\-]+@[\._a-zA-Z0-9\-]+\.[a-zA-Z]{2,}/, ["abc@haha.co.kr", "abc@haha..co.kr", "hwang@a.com"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+<TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^[\w\-]+@(?:[\w\-]{2,}\.)+[a-zA-Z]{2,}$/, ["abc@haha.co.kr", "abc@haha..co.kr", "hwang@a.com"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+<TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+    writeExample(/^([a-z]+):\/\/((?:[a-z\d\-]{2,}\.)+[a-z]{2,})(:\d{1,5})?(\/[^\?]*)?(\?.+)?$/i, ["http://www.blah.co.kr/main/index.jsp?var=value", "http://www.blah.co.kr/main/index.jsp", "http://blah.co.kr/", "http://blah.co.kr",  "http://blah.co.kr:8088/main/"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+
+<TR bgcolor="#FFFFFF">
+  <td>
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/^[¤¡-¤Ó°¡-ÆR]+$/, ["Æ¼¸Æ½º¼ÒÇÁÆ®", "¤Ì¤Ì", "¤¾¤¾"]);
+    //-->
+    </SCRIPT>
+  </td>
+</tr>
+
+</table>
+<br>
+
+ <a name="chap05"><H1>5. Javascript Á¤±Ô½Ä ÇÔ¼ö</H1></a>
+  <TABLE width=1024 border=0 CELLPADDING="5" CELLSPACING="1" BGCOLOR="#CCCCCC">
+  <TR bgcolor="#DDDDDD">
+  <th width=200>ÇÔ¼ö</th>
+  <th width=450>ÄÚµå¿¹Á¦</th>
+  <th width=455>ÄÚµå¼³¸í</th>
+  </tr>
+
+<TR bgcolor="#FFFFFF">
+  <td valign="top" width=200>Array RegExp.exec (<i>to be checked</i>)</td>
+  <td valign="top" width=450>
+  <XMP id ="ex_exec">
+var myRe=/d(b+)(d)/ig;
+var myArray = myRe.exec("cdbBdbsbz");
+</XMP>
+<p>
+
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/d(b+)(d)/ig, ["cdbBdbsbz"]);
+    //-->
+    </SCRIPT>
+  </td>
+  <td width=455>
+<SCRIPT LANGUAGE="JavaScript1.2">
+    <!--
+    eval(document.getElementById('ex_exec').innerHTML);
+
+    document.write("myArray.index =" + myArray.index +" ; (Ã³À½À¸·Î ¸ÅÄªµÇ´Â À§Ä¡, ÄÄÅÍ°¡ ´Ã ±×·¸µí À§Ä¡´Â 0¹øÂ°ºÎÅÍ ¼¾´Ù.)<br>");
+    document.write("myArray.input = "+ myArray.input +"; (Ã¼Å©ÇÒ ´ë»ó)<br>");
+    document.write("myArray[0] = "+myArray[0]+";(°Ë»ç¿¡ Åë°úÇÑ ºÎºÐ)<br>");
+    document.write("myArray[1] = "+myArray[1]+";(1¹øÂ° °ýÈ£¿¡¼­ Ã¼Å©µÈ ºÎºÐ)<br>");
+    document.write("myArray[2] = "+myArray[2]+";(2¹øÂ° °ýÈ£¿¡¼­ Ã¼Å©µÈ ºÎºÐ)<br>");
+    document.write("<br>");
+    
+    document.write("myRe.lastIndex =" + myRe.lastIndex +" ; (´ÙÀ½¹ø Ã¼Å©¸¦ ÇÏ±âÀ§ÇÑ À§Ä¡.)<br>");
+    document.write("myRe.ignoreCase = " + myRe.ignoreCase +"; (/i ÇÃ·¡±× Ã¼Å©)<br>");
+    document.write("myRe.global = " + myRe.global +"; (/g ÇÃ·¡±× Ã¼Å©)<br>");
+    document.write("myRe.multiline = " + myRe.multiline +"; (/m ÇÃ·¡±× Ã¼Å©)<br>");
+
+
+    document.write("<br>");
+    document.write("RegExp.$_ = "+(RegExp.$_ ) +";(ÀÔ·ÂÇÑ ½ºÆ®¸µ)<br>");
+//    document.write("RegExp.$& = "+(RegExp.$& ) +";(Á¤±Ô½Ä)<br>");
+//    document.write("RegExp.$+ = "+(RegExp.$+ ) +";(Á¤±Ô½Ä)<br>");
+//    document.write("RegExp.$' = "+(RegExp.$' ) +";(Á¤±Ô½Ä)<br>");
+//    document.write("RegExp.$` = "+(RegExp.$` ) +";(Á¤±Ô½Ä)<br>");
+    document.write("RegExp.$1 = "+(RegExp.$1 ) +";(1¹øÂ° °ýÈ£¿¡¼­ Ã¼Å©µÈ ºÎºÐ )<br>");
+    //-->
+</SCRIPT>
+
+  </td>
+</tr>
+
+<TR bgcolor="#FFFFFF">
+  <td valign="top" width=200>boolean RegExp.test(<i>to be checked</i>)</td>
+  <td valign="top" width=450>
+
+
+  <XMP id="ex_test">
+var myRe=/d(b+)(d)/ig;
+var checked = myRe.test("cdbBdbsbz");
+document.write("checked = " + checked +";<br>");
+</XMP>
+<p>
+
+  <SCRIPT LANGUAGE="JavaScript">
+    <!--
+        writeExample(/d(b+)(d)/ig, ["cdbBdbsbz"]);
+    //-->
+    </SCRIPT>
+  </td>
+  <td  valign="top" width=455>½ÇÇà°á°ú:
+<SCRIPT LANGUAGE="JavaScript1.2">
+    <!--
+eval(document.getElementById('ex_test').innerHTML);
+    //-->
+</SCRIPT>
+
+  </td>
+</tr>
+
+<TR bgcolor="#FFFFFF">
+  <td valign="top" width=200>String RegExp.toString()</td>
+  <td valign="top" width=450>
+
+  <XMP id="ex_toString">
+var myRe=/d(b+)(d)/ig;
+var str = myRe.toString();
+document.write(str);
+</XMP>
+<p>
+  </td>
+  <td  valign="top" width=455>½ÇÇà °á°ú:
+<SCRIPT LANGUAGE="JavaScript1.2">
+    <!--
+eval(document.getElementById('ex_toString').innerHTML);
+    //-->
+</SCRIPT>
+
+  </td>
+</tr>
+
+
+<TR bgcolor="#FFFFFF">
+  <td valign="top" width=200 rowspan=4>String String.replace(<i>pattern or string</i>, <i>to be replaced</i>)</td>
+  <td valign="top" width=450>
+  
+  <XMP id="ex_str_str">
+var str = "abcdefe";
+document.write(str.replace("e" , "f"));
+</XMP>
+  </td>
+  <td  valign="top" width=455>½ÇÇà °á°ú:
+<SCRIPT LANGUAGE="JavaScript1.2">
+    <!--
+eval(document.getElementById('ex_str_str').innerHTML);
+    //-->
+</SCRIPT>
+    <br><br>
+    e°¡ 2¹ø ÀÖÁö¸¸, Ã¹¹øÂ° ÀÎÀÚ°¡ Á¤±Ô½ÄÀÌ ¾Æ´Ï¶ó ¹®ÀÚ¿­ÀÏ °æ¿ì´Â Ã¹¹øÂ° °Í¸¸ ¹Ù²Û´Ù.
+
+  </td>
+</tr>
+
+<TR bgcolor="#FFFFFF">
+  <td valign="top" width=450>
+  <XMP id="ex_reg_str">
+var str = "aba";
+document.write(str.replace(/^a/ , "c"));
+</XMP>
+  </td>
+  <td  valign="top" width=455>½ÇÇà °á°ú:
+<SCRIPT LANGUAGE="JavaScript1.2">
+    <!--
+eval(document.getElementById('ex_reg_str').innerHTML);
+    //-->
+</SCRIPT>
+
+  </td>
+</tr>
+<TR bgcolor="#FFFFFF">
+  <td valign="top" width=450>
+  <XMP id="ex_str_$">
+var re = /(\w+)\s(\w+)/;
+var str = "John Smith";
+newstr = str.replace(re, "$2, $1");
+document.write(newstr)
+</XMP>
+  </td>
+  <td  valign="top" width=455>½ÇÇà °á°ú:
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+eval(document.getElementById('ex_str_$').innerHTML);
+//-->
+</SCRIPT>
+<br><br>
+    re¿¡ ÀÇÇØ¼­ Ã£¾ÆÁø ¹®ÀÚ¿­ µéÀº re¿¡¼­ ()·Î Ç¥ÇöµÈ ¼ø¼­´ë·Î $1, $2¿Í °°ÀÌ º¯¼ö·Î ÀúÀåµÈ´Ù.
+  </td>
+</tr>
+<TR bgcolor="#FFFFFF">
+  <td valign="top" width=450>
+  <XMP  id="ex_str_fun">
+var re = /\s(?:http|https):\/\/\S*(?:\s|$)/g;
+var str = "url is http://iilii.egloos.com/ !!\n";
+str += "blah home: http://www.blah.co.kr";
+newstr = str.replace(re, function (str,p1,offset,s) {
+     return "<a href='" + str + "'>" + str + "</a>";
+  }
+).replace(/\n/, "<br>");
+document.write(newstr);
+</XMP>
+  </td>
+  <td  valign="top" width=455>
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+eval(document.getElementById('ex_str_fun').innerHTML);
+//-->
+</SCRIPT>
+    <br>
+    <br>
+     str: Ã£Àº ¹®ÀÚ¿­<br>
+     p1: ()¿¡¼­ °Ë»öµÈ 1¹øÂ° ¹®ÀÚ¿­. ¸¶Âù°¡Áö·Î p2,p3 µîµµ °¡´É<br>
+     offset: strÀ» Ã£Àº À§Ä¡<br>
+     s : ¿øº» ¹®ÀÚ¿­.<br>
+  </td>
+</tr>
+
+
+<TR bgcolor="#FFFFFF">
+  <td valign="top" width=200>Array String.match(<i>regular expression</td>
+  <td valign="top" width=450>
+  <XMP id="ex_match">
+var str = "ABCdEFgHiJKL";
+var myResult = str.match(/[a-z]/g );
+for(var cnt = 0 ; cnt < myResult.length; cnt++){
+    document.write(cnt +":" + myResult[cnt] +"<br>");
+}
+
+document.write("ºñ±³<br>");
+
+var str = "ABCdEFgHiJKL";
+var myResult = /[a-z]/g.exec(str);
+for(var cnt = 0 ; cnt < myResult.length; cnt++){
+    document.write(cnt +":" + myResult[cnt] +"<br>");
+}
+</XMP>
+
+  </td>
+  <td  valign="top" width=455>½ÇÇà °á°ú:<br>
+<SCRIPT LANGUAGE="JavaScript1.2">
+    <!--
+eval(document.getElementById('ex_match').innerHTML);
+    //-->
+</SCRIPT>
+    <br>
+    String.match(RegExp) =>g flag°¡ ÀÖÀ¸¸é ´Ù Ã£¾Æ³½´Ù. <br>
+    RegExp.exec(String) =>g flag°¡ ÀÖ¾îµµ, ÇÑ °³¸¸ Ã£°í ³¡³½´Ù.
+  </td>
+</tr>
+
+<TR bgcolor="#FFFFFF">
+  <td valign="top" width=200>Array String.split(<i>[separator[, limit]]</i>)</td>
+  <td valign="top" width=450>
+  <XMP id="ex_split">
+var str = "ABCdEFgHiJKL";
+var myResult = str.split(/[a-z]/g , 3);
+for(var cnt = 0 ; cnt < myResult.length; cnt++){
+    document.write(cnt +":" + myResult[cnt] +"<br>");
+}
+</XMP>
+  </td>
+  <td  valign="top" width=455>½ÇÇà °á°ú:<br>
+<SCRIPT LANGUAGE="JavaScript1.2">
+    <!--
+eval(document.getElementById('ex_split').innerHTML);
+    //-->
+</SCRIPT>
+    <br>
+    ÁÖ¾îÁø ¹®ÀÚ¿­À» separator¸¦ ±âÁØÀ¸·Î limit ¸¸Å­ ÀÚ¸¥´Ù.
+  </td>
+</tr>
+
+
+  </table>
+
+ <a name="chap06"><H1>6. Á¤±Ô½ÄÀ¸·Î ¸¸µç À¯¿ëÇÑ Javascript ÇÔ¼ö</H1></a>
+     <TABLE width=1024 border=0 CELLPADDING="5" CELLSPACING="1" BGCOLOR="#CCCCCC">
+
+<TR bgcolor="#DDDDDD"><td><h3>String removeTags(<i>input</i>)</h3>
+HTML tagºÎºÐÀ» ¾ø¾ÖÁØ´Ù
+</td></tr>
+<TR bgcolor="#FFFFFF"><td>
+<XMP id="func_remove">
+function removeTags(input) {
+    return input.replace(/<[^>]+>/g, ""); 
+};</XMP>
+</td></tr>
+<TR bgcolor="#FFFFFF"><td>
+example&gt;<br>
+<XMP id="func_remove_ex">
+var str = "<b>blah</b> <i>soft</i>";
+document.write(str +"<br>");
+document.write(removeTags(str));
+</XMP>
+result&gt;<br>
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+eval(document.getElementById('func_remove').innerHTML);
+eval(document.getElementById('func_remove_ex').innerHTML);
+//-->
+</SCRIPT>
+</td></tr>
+<TR bgcolor="#DDDDDD"><td><h3>String String.trim()</h3>
+¹®ÀÚ¿­ÀÇ ¾ÕµÚ °ø¹éÀ» ¾ø¾ÖÁØ´Ù.
+</td></tr>
+<TR bgcolor="#FFFFFF"><td>
+<XMP id="func_trim">
+String.prototype.trim = function() {
+    return this.replace(/^\s+|\s+$/g, ''); 
+};</XMP>
+</td></tr>
+<TR bgcolor="#FFFFFF"><td>
+example&gt;<br>
+<XMP id="func_trim_ex1">
+var str = "         untrimed string            ";
+document.write("========" + str+ "==============<br>");
+document.write("========" + str.trim() + "==============");
+</XMP>
+result&gt;<br>
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+eval(document.getElementById('func_trim').innerHTML);
+eval(document.getElementById('func_trim_ex1').innerHTML);
+//-->
+</SCRIPT>
+</td></tr>
+<TR bgcolor="#DDDDDD"><td><h3>String String.capitalize()</h3>
+´Ü¾îÀÇ Ã¹ ±ÛÀÚ¸¦ ´ë¹®ÀÚ·Î ¹Ù²ãÁØ´Ù.
+</td></tr>
+<TR bgcolor="#FFFFFF"><td>
+<XMP id="func_capitalize">
+String.prototype.capitalize = function() {
+    return this.replace(/\b([a-z])/g, function($1){
+        return $1.toUpperCase();
+    }) ;  
+};</XMP>
+</td></tr>
+<TR bgcolor="#FFFFFF"><td>
+example&gt;<br>
+<XMP id="func_capitalize_ex1">
+var str = "korea first world best";
+document.write(str.capitalize());
+</XMP>
+result&gt;<br>
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+eval(document.getElementById('func_capitalize').innerHTML);
+eval(document.getElementById('func_capitalize_ex1').innerHTML);
+//-->
+</SCRIPT>
+</td></tr>
+  <TR bgcolor="#DDDDDD">
+    <td><h3>String number_format(<i>input</i>)</h3>
+ÀÔ·ÂµÈ ¼ýÀÚ¸¦ ,¸¦ ÂïÀº ÇüÅÂ·Î µ¹·ÁÁØ´Ù</td>
+</tr>
+  <TR bgcolor="#FFFFFF"><td>
+<XMP id="func_number_format">
+function number_format(input){
+    var input = String(input);
+    var reg = /(\-?\d+)(\d{3})($|\.\d+)/;
+    if(reg.test(input)){
+        return input.replace(reg, function(str, p1,p2,p3){
+                return number_format(p1) + "," + p2 + "" + p3;
+            }    
+        );
+    }else{
+        return input;
+    }
+}</XMP>
+</td></tr>
+<TR bgcolor="#FFFFFF"><td>
+example&gt;<br>
+<XMP id="func_number_format_ex1">
+document.write(number_format(1234562.12) + "<br>");
+document.write(number_format("-9876543.21987")+ "<br>");
+document.write(number_format("-123456789.12")+ "<br>");
+</XMP>
+result&gt;<br>
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+eval(document.getElementById('func_number_format').innerHTML);
+eval(document.getElementById('func_number_format_ex1').innerHTML);
+//-->
+</SCRIPT>
+</td></tr>
+</table>
+
+
+
+
+
+
+<a name="chap07"> <H1>7. Java Á¤±Ô½Ä ÇÔ¼ö</H1> </a>
+
+     <TABLE width=1024 border=0 CELLPADDING="5" CELLSPACING="1" BGCOLOR="#CCCCCC">
+<TR bgcolor="#FFFFFF"><td>
+<pre>
+Pattern p = Pattern.compile("(a*)(b)");
+Matcher m = p.matcher("aaaaab");
+if (m.matches()) {
+    for (int i = 0; i < m.groupCount() + 1; i++) {
+        System.out.println(i + ":" + m.group(i));
+    }
+} else {
+    System.out.println("not match!");
+}
+
+result>
+0:aaaaab
+1:aaaaa
+2:b
+0¹øÂ°´Â ¸ÅÄªµÈ ºÎºÐ.
+</pre>
+    </td></tr>
+<TR bgcolor="#FFFFFF"><td>
+<pre>
+String a = "I love her";
+System.out.println(a.replaceAll("([A-Z])", "\"$1\""));
+
+result>
+"I" love her
+ÀÚ¹Ùµµ $1À» ¾µ ¼ö ÀÖ´Ù.
+</pre>
+    </td></tr>
+<TR bgcolor="#FFFFFF"><td>
+<pre>
+Pattern p = Pattern.compile("cat");
+Matcher m = p.matcher("one cat two cats in the yard");
+StringBuffer sb = new StringBuffer();
+while (m.find()) {
+    m.appendReplacement(sb, "dog");
+    System.out.println(sb.toString());
+}
+m.appendTail(sb);
+System.out.println(sb.toString());
+
+result>
+one dog
+one dog two dog
+one dog two dogs in the yard
+</pre>
+    </td></tr>
+</table>
+
+ </BODY>
+</HTML>

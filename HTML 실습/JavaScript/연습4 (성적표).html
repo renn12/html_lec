@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function main() {
+		x1 = tx1.value;
+		x2 = tx2.value;
+		x3 = tx3.value;
+		x4 = "<tr><td>"+x1+"</td><td>"+x2+"</td><td>"+x3+"</td></tr>";
+		tb1.innerHTML+=x4;
+	}
+  </script>
+  <style>
+	table {width:400px;text-align:center;margin-top:4px;border-collapse: collapse;}
+  </style>
+ </head>
+ <body>
+	<fieldset>
+		<legend>성적입력</legend>
+	성명 : <input type="text" id="tx1"> 
+	국어 : <input type="text" id="tx2"> 
+	영어 : <input type="text" id="tx3"> 
+	<input type="submit" onclick="main()">
+	</fieldset>
+
+  <table id="tb1" border="1"></table>
+  <script>
+	x0 = "<tr><th>성명</th><th>국어</th><th>영어</th></tr>";
+	tb1.innerHTML=x0;
+  </script>
+ </body>
+</html>

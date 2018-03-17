@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript">
+	
+  </script>
+  <style>
+	div.out {
+		width: 200px;
+		height: 100px;
+		background-color: yellow;
+	}
+  </style>
+  <script>
+	$(document).ready(function(){
+		$("input").focus(function(){
+			$(this).css({"background-color": "yellow", "height": "20px"});
+			$("#type1").html("Event : " + event.type);
+		});
+		$("input").blur(function(){
+			$(this).css("background-color", "white");
+			$(this).css("width", "200px");
+			$("#type1").html("Event : " + event.type);
+		});
+		$("#txt1").keydown(function(event){
+			$("#which1").html("Key: " + event.which);
+			$("#type1").html("Event : " + event.type);
+		});
+	});
+  </script>
+ </head>
+ <body>
+	<div class="out">
+		<p>마우스를 여기로 움직이세요.</p>
+		<p>0</p>
+	</div>
+	아이디 : <input type="text" name="name" id="txt1"><br/>
+
+	<div id="log"></div>
+	<div id="type1"></div>
+	<div id="which1"></div>
+	<script>
+		$(document).on({
+			mousemove: function(e) {
+				$("#log").text("e.pageX: " + e.pageX + ", e.pageY: " + e.pageY);
+				$("#type1").html("Event : " + event.type);
+			},
+			keydown: function(e) {
+				$("#which1").html("Key: " + e.which);
+				$("#type1").html("Event : " + event.type);
+			}    
+		});
+	</script>
+	<script>
+		var i = 0;
+		$("div.out").on({
+			mouseover: function(){
+				$("p:first", this).text("mouse over");
+				$("p:last", this).text(++i);
+			},
+			mouseleave: function(){
+				$("p:first", this).text("mouse leave");
+				$("p:last", this).html(i=i-100);
+			},
+			click: function(e) {
+				$(this).html("Key: " + e.type);
+			}
+		});
+	</script>
+ </body>
+</html>

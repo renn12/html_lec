@@ -1,0 +1,286 @@
+<html>
+<head>
+<style>
+td,th { 
+	border: 1px solid black;
+}
+</style>
+<script src="jquery.js"></script>
+<script src="tableSort.min.1.0.js"></script>
+
+<script>
+  var sArr = new Array();
+
+  function main(tname,tkor,teng){
+	var dex = sArr.length;
+	sArr.push(new Student(tname,tkor,teng));
+	//alert(sArr[dex].index);
+	sArr[dex].index = dex + 1;
+	//alert(sArr.length);
+	//for(var i in sArr) sArr[i].index = parseInt(i)+1;
+	sArr.sort(function(b,a){return a.total()-b.total();});
+	for(var i in sArr) sArr[i].rank = parseInt(i)+1;
+	sArr.sort(function(a,b){return a.index-b.index;});
+	view.innerHTML=makeTag(sArr);
+  }
+  function rand() {
+		var sname = "학생" + parseInt(Math.random()*100);
+		var skor = parseInt(Math.random()*100);
+		var seng = parseInt(Math.random()*100);
+		main(sname, skor, seng);
+  }
+  function Student(name,kor,eng){
+	  this.name=name;
+	  this.kor=parseInt(kor);
+	  this.eng=parseInt(eng);
+	  this.total=function(){
+		  return this.kor+this.eng;
+	  }
+	  this.average=function(){
+		  return parseInt((this.kor+this.eng)/2);
+	  }
+  }
+  function makeTag(arr){
+	  var tag="";
+	  for(var x in arr){
+		 with(arr[x]){
+		  tag+="<tr>";
+		  tag+="<td>"+rank+"</td>";
+		  tag+="<td>"+name+"</td>";
+		  tag+="<td>"+kor+"</td>";
+		  tag+="<td>"+eng+"</td>";
+		  tag+="<td>"+total()+"</td>";
+		  tag+="<td>"+average()+"</td>";
+		  tag+="</tr>";
+		 }
+	  }
+	  return tag;
+  }
+  </script>
+  <script>
+	var tableSort;
+	onload=function() {	
+		tableSort = $("#list").tableSort("#view");
+		$("a").click(function(){
+			$("table").trigger("update");
+		});
+	}
+	function goSort() {
+		tableSort.view();
+		
+	}
+
+</script>
+</head>
+<body>
+name:<input type="text" id="sname">
+  kor:<input type="text" id="skor">
+  eng<input type="text" id="seng">
+ <input type="button" value="enter" onclick="main(sname.value,skor.value,seng.value)">
+ <input type="button" value="random" onclick="rand()">
+ <hr>
+	<table id="list" border="1" width="500px">
+		<tbody>
+			<tr>
+				<th><a href="javascript:goSort()">순위</a></th>
+				<th><a href="javascript:goSort()">성명</a></th>
+				<th><a href="javascript:goSort()">국어</a></th>
+				<th><a href="javascript:goSort()">영어</a></th>
+				<th><a href="javascript:goSort()">총점</a></th>
+				<th><a href="javascript:goSort()">평균</a></th>
+			</tr>
+		</tbody>
+		<tbody id="view">
+		</tbody>
+	</table>
+	
+	<!--
+	<table id="list" cellspacing="0">
+		<tbody>
+			<tr>
+				<th>선수명</th>
+				<th>포지션</th>
+				<th><a href="javascript:goSort()">타율</a></th>
+				<th><a href="javascript:goSort()">총타수</a></th>
+				<th><a href="javascript:goSort()">총안타</a></th>
+				<th><a href="javascript:goSort()">홈런</a></th>
+				<th><a href="javascript:goSort()">도루</a></th>
+				<th><a href="javascript:goSort()">타점</a></th>
+				<th><a href="javascript:goSort()">장타율</a></th>
+				<th><a href="javascript:goSort()">2루타</a></th>
+				<th><a href="javascript:goSort()">3루타</a></th>
+				<th><a href="javascript:goSort()">사사구</a></th>
+				<th><a href="javascript:goSort()">득점</a></th>
+				<th><a href="javascript:goSort()">삼진</a></th>
+				<th><a href="javascript:goSort()">출루율</a></th>
+				<th><a href="javascript:goSort()">OPS</a></th>
+			</tr>
+		</tbody>
+		<tbody id="view">
+		<tr>
+			<td>이승화</td>
+			<td>외야</td>
+			<td>0.250</td>
+			<td>4</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0.250</td>        
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0.250</td>
+			<td>0.500</td>
+		</tr>
+		<tr>
+			<td>조성환</td>
+			<td>내야</td>
+			<td>0.250</td>
+			<td>4</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0.250</td>        
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0.250</td>
+			<td>0.500</td>
+		</tr>
+		<tr>
+			<td>박기혁</td>
+			<td>내야</td>
+			<td>0.250</td>
+			<td>4</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0.250</td>        
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>2</td>
+			<td>0.250</td>
+			<td>0.500</td>
+		</tr>
+		<tr>
+			<td>홍성흔</td>
+			<td>외야</td>
+			<td>0.500</td>
+			<td>4</td>
+			<td>2</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0.500</td>        
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>0.500</td>
+			<td>1.000</td>
+		</tr>
+		<tr>
+			<td>김주찬</td>
+			<td>내야</td>
+			<td>0.500</td>
+			<td>4</td>
+			<td>2</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0.500</td>        
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0.500</td>
+			<td>1.000</td>
+		</tr>
+		<tr>
+			<td>이대호</td>
+			<td>내야</td>
+			<td>0.000</td>
+			<td>4</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0.000</td>        
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>2</td>
+			<td>0.000</td>
+			<td>0.000</td>
+		</tr>
+		<tr>
+			<td>가르시아</td>
+			<td>외야</td>
+			<td>0.750</td>
+			<td>4</td>
+			<td>3</td>
+			<td>1</td>
+			<td>0</td>
+			<td>3</td>
+			<td>1.750</td>        
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0.750</td>
+			<td>2.500</td>
+		</tr>
+		<tr>
+			<td>강민호</td>
+			<td>포수</td>
+			<td>0.250</td>
+			<td>4</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0.250</td>        
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0.250</td>
+			<td>0.500</td>
+		</tr>
+		<tr>
+			<td>이인구</td>
+			<td>외야</td>
+			<td>0.000</td>
+			<td>4</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0.000</td>        
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0.000</td>
+			<td>0.000</td>
+		</tr>
+		</tbody>
+	</table>
+	-->
+</body>
+</html>

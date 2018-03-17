@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function main(a, b) {
+		var tag = "<table border='1'>";
+		for (i = 1;i <= a ;i++ )
+		{
+			tag += "<tr>";
+			for (j = 1;j <= b ;j++ )
+			{
+				tag += "<td>"+i+"."+j+"</td>";
+			}
+			tag += "</tr>";
+		}
+		tag += "</table>";
+		area.innerHTML = tag;
+	}
+  </script>
+ </head>
+ <body>
+  ROW <input type="text" id="txt1">
+  COL <input type="text" id="txt2">
+  <input type="button" onclick="main(txt1.value, txt2.value)" value="enter"><hr/>
+  <div id="area"></div>
+ </body>
+</html>

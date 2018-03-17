@@ -1,0 +1,94 @@
+<html>
+<head>
+<style>
+td,th { 
+	border: 1px solid black;
+}
+</style>
+<script src="jquery.js"></script>
+<script src="tableSort.min.1.0.js"></script>
+
+
+<script>
+function main()	{
+		var sname, skor,seng, sav, stot, sgr;
+		sname=txtName.value;
+		//alert(sname);
+		skor=txtKor.value;
+		seng=txtEng.value;
+		stot=parseInt(skor)+parseInt(seng);
+		sav=stot/2;
+		sgr="";
+		if (sav >=90) {
+			sgr = "A";
+		}
+		else if (sav >= 80) {
+			sgr = "B";
+		}
+		else if (sav >= 70) {
+			sgr = "C";
+		}
+		else {
+			sgr = "F";
+		}
+		var tag="";
+//		tag+="<table>";
+			tag+="<tr>";
+				tag+="<td>";
+				tag+=sname;
+				tag+="</td>";
+				tag+="<td>";
+				tag+=skor;
+				tag+="</td>";
+				tag+="<td>";
+				tag+=seng;
+				tag+="</td>";
+				tag+="<td>";
+				tag+=stot;
+				tag+="</td>";
+				tag+="<td>";
+				tag+=sav;
+				tag+="</td>";
+				tag+="<td>";
+				tag+=sgr;
+				tag+="</td>";
+			tag+="</tr>";
+//		tag+="</table>";
+		//alert(tag);
+		console.log("tag=>"+tag);
+		view.innerHTML+=tag;
+	}
+</script>
+<script>
+var tableSort;
+onload=function() {	tableSort = $("#list").tableSort("#view");}
+function goSort() {
+	tableSort.view();
+}
+</script>
+</head>
+<body>
+  성명:<input type="text" id="txtName">
+  국어:<input type="text" id="txtKor">
+  영어:<input type="text" id="txtEng">
+  <button onclick="main()" id="btn1">Enter</button><hr/>
+	<table id="list" cellspacing="0">
+		<tbody>
+			<tr>
+				<th><a href="javascript:goSort()">성명</a></th>
+				<th><a href="javascript:goSort()">국어</a></th>
+				<th><a href="javascript:goSort()">영어</a></th>
+				<th><a href="javascript:goSort()">총점</a></th>
+				<th><a href="javascript:goSort()">평균</a></th>
+				<th><a href="javascript:goSort()">학점</a></th>
+			</tr>
+		</tbody>
+		<tbody id="view">
+			<tr><td>학생64</td><td>71</td><td>71</td><td>142</td><td>71</td><td>A</td></tr>
+			<tr><td>학생64</td><td>70</td><td>71</td><td>142</td><td>71</td><td>A</td></tr>
+			<tr><td>학생64</td><td>71</td><td>71</td><td>142</td><td>71</td><td>A</td></tr>
+			<tr><td>학생64</td><td>71</td><td>71</td><td>142</td><td>71</td><td>A</td></tr>
+		</tbody>
+	</table>
+</body>
+</html>

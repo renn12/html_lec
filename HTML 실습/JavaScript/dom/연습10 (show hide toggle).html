@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function show() {
+		document.getElementById("area").style.display = "";
+	}
+	function hide() {
+		document.getElementById("area").style.display = "none";
+	}
+	function toggle() {
+		var a = document.getElementById("area").style.display;
+		document.getElementById("area").style.display = (a == "none") ? "" : "none";
+	}
+  </script>
+ </head>
+ <body>
+  <button onclick="show()">SHOW</button>
+  <button onclick="hide()">HIDE</button>
+  <button onclick="toggle()">Toggle</button>
+  <h2 id="area">test2</h2>
+ </body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Music, Photo Gallery</title>
+	<link rel="stylesheet" href="index-style.css" />
+	<script>
+        var cityCat = 0;
+        function menu(city) {
+            if (city == 1) var arrCity = ["4", "2", "28", "3", "6", "7", "13", "14", "15", "16", "17", "20", "25", "26", "27"];
+            if (city == 2) var arrCity = ["5", "8", "9", "10", "11", "12"];
+            if (city == 3) var arrCity = ["1", "29", "18", "19", "21", "22", "23", "24"];
+            sidePhoto.innerHTML = "";
+            for (i = 0; i < arrCity.length; i++) {
+                var menuPhoto = "<div><a href='photo/" + arrCity[i] + ".html' target='iframe1'><img src='photo/" + arrCity[i] + ".jpg' /></a></div>";
+                sidePhoto.innerHTML += menuPhoto;
+            }
+        }
+        function menuCall(pick) {
+            if (cityCat == pick) {
+                sidePhoto.innerHTML = "";
+                cityCat = 0;
+            }
+            else {
+                menu(pick);
+                cityCat = pick;
+            }
+        }
+    </script>
+ </head>
+ <body>
+  <header>
+	<h1>Music, Photo Gallery</h1>
+  </header>
+  <nav>
+	<ul>
+		<li><a href="">Home</a></li>
+        <li><a href="contacts.html" target="iframe1">Contacts</a></li>
+		<li><a href="links.html" target="iframe1">Links</a></li>
+		<li><a href="login.html" target="iframe1">Log In</a></li>
+		<li><a href="join.html" target="iframe1">Join</a></li>
+	</ul>
+  </nav>
+  <aside>
+	<div class="sidetitle">음악감상</div>
+	<div class="sidemenu"><a href="musicp.html" target="iframe1">외국음악</a></div>
+	<div class="sidemenu"><a href="musick.html" target="iframe1">국내음악</a></div>
+	<div class="sidetitle">사진감상</div>
+	<div class="sidemenu2" onclick="menuCall(2)">서울</div>
+	<div class="sidemenu2" onclick="menuCall(1)">부산</div>
+	<div class="sidemenu2" onclick="menuCall(3)">경남</div>
+	<div id="sidePhoto"></div>
+  </aside>
+  <section>
+	<iframe name="iframe1" src="home.html"></iframe>
+  </section>
+ </body>
+</html>

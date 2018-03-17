@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <style type="text/css">
+	table,tr,th,td{border:1px solid lightblue; border-collapse:collapse;text-align:center;}
+  </style>
+  <script>
+		var sArr = new Array();
+
+	  function main(tname,tkor,teng)
+	  {
+		var dex = sArr.length;
+		sArr.push(new Student(tname,tkor,teng));
+				//alert(sArr[dex].index);
+		sArr[dex].index = dex + 1;
+				//alert(sArr.length);
+				//for(var i in sArr) sArr[i].index = parseInt(i)+1;
+		sArr.sort(function(b,a){return a.total()-b.total();});
+		for(var i in sArr) sArr[i].rank = parseInt(i)+1;
+				//alert(rad4.checked);
+		if (rad1.checked == true){
+			arrSort(sArr, 1);
+		}
+		else if (rad2.checked == true){
+			arrSort(sArr, 2);
+		}
+		else if (rad3.checked == true){
+			arrSort(sArr, 3);
+		}
+		else {
+			arrSort(sArr, 4);
+		}
+	  }
+	  function rand() {
+			var sname = "학생" + parseInt(sArr.length+1);
+			var skor = parseInt(Math.random()*100);
+			var seng = parseInt(Math.random()*100);
+			main(sname, skor, seng);
+	  }
+	  function Student(name,kor,eng)
+	  {
+		  this.name=name;
+		  this.kor=parseInt(kor);
+		  this.eng=parseInt(eng);
+		  this.total=function(){
+			  return this.kor+this.eng;
+		  }
+		  this.average=function(){
+			  return parseInt((this.kor+this.eng)/2);
+		  }
+	  }
+	  function makeTag(arr)
+	  {
+		  var tag="<tr><th>순위</th><th>성명</th><th>국어</th><th>영어</th><th>총점</th><th>평균</th>";
+		  for(var x in arr)
+		  {
+			 with(arr[x])
+			 {
+			  tag+="<tr>";
+			  tag+="<td>"+rank+"</td>";
+			  tag+="<td>"+name+"</td>";
+			  tag+="<td>"+kor+"</td>";
+			  tag+="<td>"+eng+"</td>";
+			  tag+="<td>"+total()+"</td>";
+			  tag+="<td>"+average()+"</td>";
+			  tag+="</tr>";
+			 }
+		  }
+		  return tag;
+	  }
+	  function arrSort(arr, subject) {
+		switch (subject) {
+			case 1:
+				arr.sort(function(b,a){return a.kor-b.kor;});
+				break;
+			case 2:
+				arr.sort(function(b,a){return a.eng-b.eng;});
+				break;
+			case 3:
+				arr.sort(function(b,a){return a.total()-b.total();});
+				break;
+			case 4:
+				arr.sort(function(a,b){return a.index-b.index;});
+				break;
+		}
+		table1.innerHTML=makeTag(sArr);
+	  }
+
+  </script>
+  <title>Document</title>
+ </head>
+ <body>
+
+  name:<input type="text" id="sname">
+  kor:<input type="text" id="skor">
+  eng<input type="text" id="seng">
+ <input type="button" value="enter" onclick="main(sname.value,skor.value,seng.value)">
+ <input type="button" value="random" onclick="rand()">
+ <hr>
+ <form name="form1">
+	<input type="radio" id="rad1" name="rad" onclick="arrSort(sArr,1)">국어
+	<input type="radio" id="rad2" name="rad" onclick="arrSort(sArr,2)">영어
+	<input type="radio" id="rad3" name="rad" onclick="arrSort(sArr,3)">총점
+	<input type="radio" id="rad4" name="rad" onclick="arrSort(sArr,4)" checked>입력순
+ </form>
+  <table id="table1" border="1" width="500px">
+
+  </table>
+
+ </body>
+</html>

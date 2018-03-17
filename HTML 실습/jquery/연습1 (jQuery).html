@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript">
+	$(document).ready(function(){ // $대신 jQuery 가능
+		$("#btn1").click(function(){
+			$("h1").toggle();
+		});
+	});
+	function fn2() {
+		$("#second").toggle();
+	}
+
+	$(document).ready(function(){
+		$("h2").click(function(){
+			$("p").hide();
+		});
+	});
+	$(document).ready(function(){
+		$("p").click(function(){
+			$(this).hide();
+		});
+	});
+	
+  </script>
+ </head>
+ <body>
+  <button id="btn1">Enter 1</button>
+  <button id="btn2" onclick="fn2()">Enter 2</button>
+  <h1>test 111</h1>
+  <h2 id="second">test 222</h2>
+  <p>문단</p>
+  <p class="menu">1. 구입메뉴</p>
+ </body>
+</html>

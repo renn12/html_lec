@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	div {
+		background-color: green;
+		height:150px;
+		width:150px;
+	}
+	.container {
+		background-color: yellow;
+		border: 1px solid black;
+	}
+	.transformed {
+		backface-visibility: visible;
+		transform-origin: 50% 42%;
+		transform: perspective(300px) rotateY(59deg) rotateX(0deg);
+	}
+	p {
+		width: 100px;
+		height: 100px;
+		background-color:red;
+		position: relative;
+		animation: 2s myanim;
+		animation-iteration-count: 2;
+	}
+	@keyframes myanim
+	{
+		0% {left:0px; top:0px;}
+		25% {left:100px; top:0px;width:10px;}
+		50% {left:200px; top:0px;width:100px;}
+		75% {left:100px; top:0px;width:10px;}
+		100% {left:0px; top:0px;}
+	}
+	#p1 {
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		position: relative;
+		animation: 2s myp1;
+		animation-iteration-count: 2;
+	}
+	@keyframes myp1
+	{
+		0% {left:0px; top:0px;}
+		25% {left:300px; top:0px;}
+		50% {left:300px; top:300px;}
+		75% {left:0px; top: 300px;}
+		100% {left:0px; top:0px;}
+	}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ </head>
+ <body style="padding:100px;">
+  <div class="container">
+	<div class="transformed"></div>
+  </div>
+<script>
+	$(document).ready(function(){
+		//alert($(".transformed").css("transform"));
+	})
+</script>
+  <p></p>
+  <p id="p1"></p>
+  <h1 style="position:absolute;bottom:30px;left:30px;z-index:1;">Shadow</h1>
+  <h1 style="position:absolute;bottom:28px;left:32px;color:grey;z-index:0;">Shadow</h1>
+ </body>
+</html>

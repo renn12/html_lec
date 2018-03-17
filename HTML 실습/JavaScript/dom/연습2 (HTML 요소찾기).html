@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function addtext(t) {
+		if (document.createTextNode)
+		{
+			var node = document.createTextNode(t);
+			document.getElementById("target").appendChild(node);
+		}
+	}
+	function removeNode() {
+		var parent = document.getElementById("target2");
+		var child = document.getElementById("p1");
+		parent.removeChild(child);
+	}
+	function process() {
+		var obj = document.getElementById("target3");
+		alert(obj.value);
+	}
+	function process2() {
+		var obj = document.myform2.txt1;
+		alert(obj.value);
+	}
+  </script>
+ </head>
+ <body>
+  <div id="target" onclick="addtext('동적으로 텍스트가 추가됩니다.')">여기를 클릭하세요.</div>
+  <div id="target2">
+	<p id="p1">첫번째단락</p>
+	<p id="p2">두번째단락</p>
+	</div>
+	<button onclick="removeNode()">누르세요</button>
+
+	<form name="myform">
+		<input type="text" id="target3" name="text1">
+		<input type="submit" value="제출" onclick="process()">
+	</form>
+
+	<form name="myform2">
+		<input type="text" id="tar1" name="txt1">
+		<input type="text" id="tar2" name="txt2">
+		<input type="submit" onclick="process2()">
+	</form>
+
+	<ul>
+		<li>List 1</li>
+		<li>List 2</li>
+		<li>List 3</li>
+		<li>List 4</li>
+		<li>List 5</li>
+	</ul>
+	<script>
+		var list = document.getElementByTagName('ul')[0];
+		var allItems = list.getElementByTagName('li');
+
+		for (var i = 0, length = allItems.length; i < length; i++)
+		{
+			alert(allItems[i].firstChild.data);
+		}
+	</script>
+ </body>
+</html>

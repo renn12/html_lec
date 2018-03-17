@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function changeColor(c) {
+		document.getElementById("target").style.backgroundColor = c;
+		document.getElementById("target").innerHTML += "1";
+	}
+	function onLoadDoc() {
+		//alert("문서가 로드");
+		document.body.style.backgroundColor="lightgrey";
+	}
+	function sub() {
+		var x = document.getElementById("name");
+		x.value = x.value.toLowerCase();
+	}
+	function OnMouseIn(elem) {
+		elem.style.border = "2px solid red";
+	}
+	function OnMouseOut(elem) {
+		elem.style.border = "";
+	}
+	function OnButtonDown(button) {
+		button.style.color = "#ff0000";
+	}
+	function OnButtonUp(button) {
+		button.style.color = "#0000ff";
+	}
+  </script>
+ </head>
+ <body id="target" onload="onLoadDoc()">
+  <form method="POST">
+	<input type="radio" name="C1" value="v1" onclick="changeColor('lightblue')">파랑색
+	<input type="radio" name="C1" value="v2" onclick="changeColor('lightgreen')">녹색
+	</form>
+	<input type="text" id="name" onchange="sub()">
+	<div style="margin:5px;background-color:yellow;width:200px;" onmouseover="OnMouseIn (this)" onmouseout="OnMouseOut(this)">마우스를 요소 위에 이동하세요.</div>
+	<button onmousedown="OnButtonDown (this)" onmouseup="OnButtonUp(this)">click</button>
+ </body>
+</html>

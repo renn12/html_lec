@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script>
+			$(document).on({
+				keydown: function(e) {
+					if( !($("input").is(":focus")) && !($("textarea").is(":focus")) ) {
+						$("#div1").text("keyCode : " + e.which);
+					}else {
+						$("#div2").text("입력포커스on일때 keyCode : " + e.which);
+					}
+				}
+			})
+		</script>
+	</head>
+	<body>
+		<div>input, textarea에 포커스가 되어 있을 경우에는 단축키가 발동되지 않도록 한다.</div>
+		<input type="text"><br/>
+		<textarea></textarea>
+		<div id="div1" style="height:30px;"></div>
+		<div id="div2" style="height:30px;"></div>
+	</body>
+</html>

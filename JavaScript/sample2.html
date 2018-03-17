@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>sample</title>
+		<script>
+			window.onload = function(){
+				var button1 = document.getElementById('button1');
+				var counter1 = document.getElementById('counter1');
+				button1.onclick = function(){
+					counter1.innerHTML = Number(counter1.innerHTML) + 1;
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<button id="button1">Button1</button>
+		<h1>Button1 - <span id="counter1">0</span></h1>
+	</body>
+</html>

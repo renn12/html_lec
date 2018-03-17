@@ -1,0 +1,55 @@
+﻿<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+      body {
+          font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      }
+	#div1 {
+		width:90%;
+        min-width:400px;
+		height:300px;
+		background-color:black;
+		color:white;
+		margin-bottom:5px;
+	}
+	#div1 iframe {
+		width:100%;
+		height:300px;
+	}
+	.ul1 li {
+		cursor:pointer;
+		padding:10px;
+	}
+	.ul1 li:hover {
+		background-color:lightgrey;
+	}
+  </style>
+  <script>
+	function main(abc) {
+        var songCode = ["l38MAcuDblk", "bKhXABewtz8", "4DyfA1Q6nS4", "BFjw4IAkQEQ", "YlOqT9CbONk", "sV6-fE3cLRk", "qn-X5A0gbMA"];
+		var songid = songCode[abc];
+		div1.innerHTML = "<iframe src='https://www.youtube.com/embed/" + songid + "?autoplay=1' frameborder='0'></iframe>";
+	}
+	function main2() {
+		var abc = parseInt(Math.random() * 7);
+		main(abc);
+	}
+  </script>
+ </head>
+ <body>
+  <div id="div1"></div>
+  <ul class="ul1">
+	<li onclick="main2()">랜덤 재생</li>
+	<li onclick="main(0)">Tiffany Alvord - Over for Good</li>
+	<li onclick="main(1)">Jackie Cruz - Like a Drug</li>
+	<li onclick="main(2)">Hello Saferide - Long Lost Penpal</li>
+	<li onclick="main(3)">The Hush Sound - We Intertwined</li>
+	<li onclick="main(4)">Olivia Ong - Make It Mutual</li>
+	<li onclick="main(5)">Eternity - Wonderful World</li>
+	<li onclick="main(6)">OMFG - I Love You</li>
+  </ul>
+ </body>
+</html>

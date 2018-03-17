@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	tr {background-color:red;}
+  </style>
+  <script>
+	function main1() {
+		document.write("<table border='1'><tr><td>1</td><td>2</td></tr><tr><td>1</td><td>2</td></tr></table>");
+	}
+	function main2() {
+		var tag = "<table border='1'><tr><td>1</td><td>2</td></tr><tr><td>1</td><td>2</td></tr></table>";
+		area.innerHTML += tag; // = area.innerHTML = area.innerHTML + tag;
+	}
+	function main3() {
+		input = prompt("정수 입력", "");
+		x = input - 0;
+		input = prompt("정수 입력", "");
+		y = input - 0;
+		area.innerHTML = x + y;
+	}
+  </script>
+ </head>
+ <body>
+	<button onclick="main1()">Enter1</button>
+	<button onclick="main2()">Enter2</button>
+	<button onclick="main3()">Enter3</button>
+	<div id="area"></div>
+	<script>
+		var x = 1;
+		var y = 10;
+	</script>
+ </body>
+</html>

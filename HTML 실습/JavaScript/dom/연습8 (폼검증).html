@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function display(form) {
+		alert(form["addr"].value);
+	}
+	function checkNotEmpty(field) {
+		if (field.value.length==0)
+		{
+			alert("필드가 비어있네요.");
+			field.focus();
+			return false;
+		}
+		return true;
+	}
+	function checkLength(elem, min, max) {
+		var s = elem.value;
+		if(s.length>=min && s.length <= max) {
+			return true;
+		} else {
+			alert(min + " 문자와 " + max + " 문자 사이로 입력해주세요.");
+			elem.focus();
+			return false;
+		}
+	}
+  </script>
+ </head>
+ <body>
+  <input type="text" name="addr" id="addr" onclick="display(this.form)"/>
+  <form>
+	이름 : <input type="text" id="user"/>
+	<input type="button" onclick="checkNotEmpty(document.getElementById('user'))" value="확인">
+	</form>
+	<form>
+		이름(6-8문자) : <input type="text" id="name"/>
+		<input type="button" onclick="checkLength(document.getElementById('name'), 6, 8)" value="확인" />
+	</form>
+
+ </body>
+</html>

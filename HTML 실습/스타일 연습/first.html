@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Style 연습</title>
+  
+  <style>
+	div {background-color:blue;}
+	p {background-color:green;}
+	.a {background-color:yellow;}
+	#b {background-color:pink;}
+
+	body em {color:red;} /* body 안 em 요소 */
+	body > h1 {color:blue;} /* body 안 h1 요소 */
+	a:link {text-decoration:none;color:blue;background-color:white;}
+	a:visited {text-decoration:none;color:green;background-color:silver;}
+	a:hover {text-decoration:none;color:white;background-color:blue;}
+  </style>
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+ <!-- 스타일 적용 3가지 (inline|head|외부파일)-->
+  <div style="background-color:red;">Div Test</div>
+  <div class="a">Div Test</div>
+  <div id="b">Div Test</div>
+  <div>Div Test</div>
+  <p>P Test</p>
+  <p class="a">P Test</p>
+
+  <h1>This headline is <em>very</em> important</h1>
+  <a href="http://naver.com">Naver</a><br/>
+  <a href="http://daum.net">Daum</a><br/>
+  <a href="http://nate.net">Nate</a>
+ </body>
+</html>

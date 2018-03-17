@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <style type="text/css">
+	table,tr,th,td{border:1px solid lightblue; border-collapse:collapse;text-align:center;}
+  </style>
+  <script>
+//  var sArr = new Array();
+  var sArr = [];
+
+  function main(tname,tkor,teng)
+  {
+	sArr.push(new Student(tname,tkor,teng));
+	sArr.sort(function(b,a){return a.total()-b.total();});
+	table1.innerHTML=makeTag(sArr);
+  }
+  function Student(name,kor,eng)
+  {
+	  this.name=name;
+	  this.kor=parseInt(kor);
+	  this.eng=parseInt(eng);
+	  this.total=function(){
+		  return this.kor+this.eng;
+	  }
+	  this.average=function(){
+		  return parseInt((this.kor+this.eng)/2);
+	  }
+  }
+  function makeTag(arr)
+  {
+	  var tag="<tr><th>순위</th><th>성명</th><th>국어</th><th>영어</th><th>총점</th><th>평균</th>";
+	  for(var x in arr)
+	  {
+		 with(arr[x])
+		 {
+		  tag+="<tr>";
+		  tag+="<td>"+(parseInt(x)+1)+"</td>";
+		  tag+="<td>"+name+"</td>";
+		  tag+="<td>"+kor+"</td>";
+		  tag+="<td>"+eng+"</td>";
+		  tag+="<td>"+total()+"</td>";
+		  tag+="<td>"+average()+"</td>";
+		  tag+="</tr>";
+		 }
+	  }
+	  return tag;
+  }
+
+  </script>
+  <title>Document</title>
+ </head>
+ <body>
+
+  name:<input type="text" id="sname">
+  kor:<input type="text" id="skor">
+  eng<input type="text" id="seng">
+ <input type="button" value=enter onclick="main(sname.value,skor.value,seng.value)">
+ <hr>
+  <table id="table1" border="1" width="500px">
+
+  </table>
+
+ </body>
+</html>

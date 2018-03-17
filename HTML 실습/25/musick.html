@@ -1,0 +1,55 @@
+﻿<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+      body {
+          font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      }
+    #div1 {
+        width: 90%;
+        min-width: 400px;
+        height: 300px;
+        background-color: black;
+        color: white;
+        margin-bottom: 5px;
+    }
+	#div1 iframe {
+		width:100%;
+		height:300px;
+	}
+	.ul1 li {
+		cursor:pointer;
+		padding:10px;
+	}
+	.ul1 li:hover {
+		background-color:lightgrey;
+	}
+  </style>
+  <script>
+	function main(abc) {
+		var songCode = ["NA1qlyrJ-C0", "VN0NXq8YhRo", "80nGOu5rCT0", "ZFgoqO2H-Zc", "E2LhYyNSgrg", "gvW1-rKSThI", "IolA29oXW-k"];
+		var songid = songCode[abc];
+		div1.innerHTML = "<iframe src='https://www.youtube.com/embed/" + songid + "?autoplay=1' frameborder='0'></iframe>";
+	}
+	function main2() {
+		var abc = parseInt(Math.random() * 7);
+		main(abc);
+	}
+  </script>
+ </head>
+ <body>
+  <div id="div1"></div>
+  <ul class="ul1">
+	<li onclick="main2()">랜덤 재생</li>
+	<li onclick="main(0)">참깨와 솜사탕 - 두리두리</li>
+	<li onclick="main(1)">모리 - Hello Music</li>
+	<li onclick="main(2)">검정치마 - International Love Song</li>
+	<li onclick="main(3)">가을방학 - 호흡과다</li>
+	<li onclick="main(4)">브로콜리 너마저 - 속 좁은 여학생</li>
+	<li onclick="main(5)">헤르쯔 아날로그 - 연애상담인듯</li>
+	<li onclick="main(6)">우효 - 안녕</li>
+  </ul>
+ </body>
+</html>

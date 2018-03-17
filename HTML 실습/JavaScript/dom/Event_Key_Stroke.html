@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title> New Document </title>
+   <meta charset="UTF-8">
+  <script>
+function whichButton(event)
+{
+
+	//alert(event.keyCode);
+
+        var c = event.keyCode;
+		 if(c==37) { Left(); }
+        if(c==38) { Up(); }
+        if(c==39) { Right(); }
+        if(c==40) { Down(); }
+
+	/* 키보드  j | i| k|m 을 통한 방향전환
+       var c = String.fromCharCode(event.keyCode);
+	   alert(c);
+        if(c=='j' || c=='J') { Left(); }
+        if(c=='i' || c=='I') { Up(); }
+        if(c=='k' || c=='K') { Right(); }
+        if(c=='m' || c=='M') { Down(); }
+		*/
+		
+
+}
+
+		function Right() {
+	       var loc=parseInt(document.all["myLay"].style.left);
+	       document.all["myLay"].style.left=loc+50+"px";;
+		   
+	    }
+	   function Left() {
+		   //alert(loc);
+	       var loc=parseInt(document.all["myLay"].style.left);
+		  // alert(loc);
+	       document.all["myLay"].style.left=loc-50+"px";
+		  // alert(document.all["myLay"].style.left);
+	   }
+
+		function Up() {
+	       var loc=parseInt(document.all["myLay"].style.top);
+	       document.all["myLay"].style.top=loc-50+"px";	    
+	   }
+	      function Down() {
+	       var loc=parseInt(document.all["myLay"].style.top);
+	       document.all["myLay"].style.top=loc+50+"px";	    
+	   }
+
+</script>
+ </head>
+
+ <body onkeyup="whichButton(event)">
+ <script type="text/javascript">
+ </script>
+  <DIV id="myLay" STYLE="position:absolute;top:100px;left:100px;width:80px;height:80px;background-color:#ff6493"> 레이어</div>
+  <script>setInterval(Down, 1000)</script>
+ </body>
+</html>

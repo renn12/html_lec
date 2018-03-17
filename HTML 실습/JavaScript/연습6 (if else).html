@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script >
+	function main1() {
+		var temp = txtNum.value;
+		var hak = ""; //변수선언 -> 초기화
+		//alert(temp);
+		if (temp>=90) //(조건식:true or false 결과가 나오는 논리식)
+		{
+			hak = "A";
+			area.innerHTML = hak;
+		}
+		else if (temp>=80)
+		{
+			hak = "B";
+			area.innerHTML = hak;
+		}
+		else
+		{
+			hak = "C";
+			area.innerHTML = hak;
+		}
+	}
+
+  </script>
+
+ </head>
+ <body>
+  <input type="text" name="" id="txtNum">
+  <input type="button" value="If연습" onclick="main1()">
+  <div id="area"></div>
+ </body>
+</html>

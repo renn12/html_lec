@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	 <head>
+		  <title> 성적 출력 - 배열로 순위 </title>
+		  <style type="text/css">
+		  table,tr,td,th{
+		  border:1px solid gray;
+		  border-collapse:collapse;
+		  }
+		  th{background-color:;color:;}
+		  tr:nth-child(odd){background-color:#F9F9F9;}
+		  tr:nth-child(even){background-color:#9F9F9F;}
+		  </style>
+			      <!-- <script src="http://code.jquery.com/jquery-1.7.js"></script> -->
+			<script src="jquery-1.11.1.min.js"></script>
+ 		  <script type="text/javascript" >
+		  <!--		
+			   var cnt=1; //자동입력용 : 학번 + cnt
+				var students = [];
+
+				//  "확인" 버튼 눌렀을때 호출되는 main함수
+				function main( sno,name, korean, math, english, science )
+				{	
+					// 입력받은 값을 Student 함수를 이용해서 배열에 넣기
+					students.push ( new Student( sno,name, korean, math, english, science ) ) ;
+					//	3등까지만 	students = students.slice(0,3);
+					selSort(6);
+					tby.innerHTML = makeTag();
+				}
+
+				// 학생 객체 생성자
+				function Student(sNo,name, korean, math, english, science)
+				{
+						// this => students 를 지칭함.
+						this.학번 = sNo;
+						this.이름 = name;
+						this.국어 = parseInt(korean);
+						this.수학 = parseInt(math);
+						this.영어 = parseInt(english);
+						this.과학 = parseInt(science);
+
+						// 총점
+						this.getSum = function (){	return this.국어 + this.수학 + this.영어 + this.과학;	};
+						
+						// 평균
+						this.getAverage = function(){		return this.getSum() / 4;		};
+				}	
+
+					//  정렬 기준별 출력
+				function selSort(subject)
+				{
+					switch(subject)
+					{
+	      				case 1:
+								students.sort ( function (right, left)	 { return left.학번 - right.학번; 	}	);	
+								tby.innerHTML = makeTag();
+								break;
+	      			
+						case 2:
+								students.sort ( function (right, left)	 { return left.국어 - right.국어; 	}	);	
+								tby.innerHTML = makeTag();								
+								break;
+						case 3:
+								students.sort ( function (right, left)	 { return left.수학 - right.수학; 	}	);	
+								tby.innerHTML = makeTag();								
+								break;
+						case 4:
+								students.sort ( function (right, left)	 { return left.영어 - right.영어; 	}	);	
+								tby.innerHTML = makeTag();								
+								break;
+						case 5:
+								students.sort ( function (right, left)	 { return left.과학 - right.과학; 	}	);	
+								tby.innerHTML = makeTag();							
+								break;
+						case 6:
+								students.sort ( function (right, left)	 { return left.getSum() - right.getSum(); 	}	);
+								tby.innerHTML = makeTag();		
+								
+								break;
+						case 7:
+								students.sort ( function (right, left)	 { return left.getAverage() - right.getAverage(); 	}	);	
+								tby.innerHTML = makeTag();							
+						break;
+						default:					;break;
+					}
+				}
+
+				
+				//  출력 태그 생성
+				function makeTag()
+				{
+					var output ="";
+			
+					for ( var i in students )		// students 배열의 주소값이 차례로 넘어옴
+					{	
+							with ( students[i] )
+							{
+								output += "<tr align=center><td>"+ (parseInt(i)+1) +"</td>";		// 순위
+								output += "<td>" + 학번 + "</td>";													// 학번
+								output += "<td>" + 이름 + "</td>";													// 이름
+								output += "<td>" + 국어 + "</td>";													// 국어 점수
+								output += "<td>" + 수학 + "</td>";													// 수학 점수
+								output += "<td>" + 영어 + "</td>";													// 영어 점수
+								output += "<td>" + 과학 + "</td>";													// 과학 점수
+								output += "<td>" + getSum() + "</td>";										// 총점
+								output += "<td>" + getAverage() + "</td></tr>";							// 평균
+							}
+					}
+					return output;
+				}					
+					
+				function sample_data()
+				{
+					ssNo="20130"+cnt;
+					cnt++;
+					num=Math.floor((Math.random()*100)+1);
+					name="길동"+num;
+					sub1=Math.floor((Math.random()*100)+1);
+					sub2=Math.floor((Math.random()*100)+1);
+					sub3=Math.floor((Math.random()*100)+1);
+					sub4=Math.floor((Math.random()*100)+1);
+
+					frm.txt_sNo.value=ssNo;
+					frm.txt_sNo.style.backgroundColor = "#ffff00";
+					frm.txt_name.value=name;
+					frm.txt_name.style.backgroundColor = "#ffff00";
+					frm.txt_kor.value=sub1;
+					frm.txt_kor.style.backgroundColor = "#ffff00";
+					frm.txt_mat.value=sub2;
+					frm.txt_mat.style.backgroundColor = "#ffff00";
+					frm.txt_eng.value=sub3;
+					frm.txt_eng.style.backgroundColor = "#ffff00";
+					frm.txt_sci.value=sub4;
+					frm.txt_sci.style.backgroundColor = "#ffff00";
+
+					main(ssNo,name,sub1,sub2,sub3,sub4);
+
+				}
+		  //-->
+		  </script>
+	 </head>
+	 
+	 <body>
+		 <form name=frm>
+
+			 <h1>성적처리</h1>
+
+			  학번 : <input size=10 type="text" name="txt_sNo">
+			  이름 : <input size=10 type="text" name="txt_name">
+			  국어 : <input size=5 type="text" name="txt_kor">
+			  수학 : <input size=5 type="text" name="txt_mat">
+			  영어 : <input size=5 type="text" name="txt_eng">
+			  과학 : <input size=5 type="text" name="txt_sci">
+
+			  <input type="button" value="확인" onclick="main(txt_sNo.value,txt_name.value, txt_kor.value, txt_mat.value, txt_eng.value, txt_sci.value)"> 
+			   <input type="button" value="Sample Data" onclick="sample_data()"> 
+			  <hr>
+               <!-- 정렬기준 : 
+
+			   <input type="radio" name="rd" value="학번" onclick="selSort(this.value)">학번
+			   <input type="radio" name="rd" value="국어" onclick="selSort(this.value)">국어
+			   <input type="radio" name="rd" value="수학" onclick="selSort(this.value)">수학
+			   <input type="radio" name="rd" value="영어" onclick="selSort(this.value)">영어
+			   <input type="radio" name="rd" value="과학" onclick="selSort(this.value)">과학
+			   <input type="radio" name="rd" value="총점" onclick="selSort(this.value)">총점
+			   <input type="radio" name="rd" value="평균" onclick="selSort(this.value)">평균
+			  <hr> -->
+
+			  <table id="tbl" width="500px">
+			  <tr>
+				<th>순위</th>
+				<th><a href="javascript:selSort(1)">학번</a></th>
+				<th>이름</th>
+				<th><a href="javascript:selSort(2)">국어</a></th>
+				<th><a href="javascript:selSort(3)">수학</a></th>
+				<th><a href="javascript:selSort(4)">영어</a></th>
+				<th><a href="javascript:selSort(5)">과학</a></th>
+				<th><a href="javascript:selSort(6)">총점</a></th>
+				<th><a href="javascript:selSort(7)">평균</a></th>
+			  </tr>
+			  <tbody id="tby">
+			  </tbody>
+			  </table>
+		  </form>
+	 </body>
+</html>
+

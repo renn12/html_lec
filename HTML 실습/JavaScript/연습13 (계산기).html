@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function plus(o1, o2) {
+		result1 = parseInt(o1) + parseInt(o2);
+		return result1;
+	}
+	function minus(o1, o2) {
+		result1 = parseInt(o1) - parseInt(o2);
+		return result1;
+	}
+	function multi(o1, o2) {
+		result1 = parseInt(o1) * parseInt(o2);
+		return result1;
+	}
+	function divide(o1, o2) {
+		result1 = parseInt(o1) / parseInt(o2);
+		return result1;
+	}
+	function main(sw) {
+		var n1 = txtNum1.value;
+		var n2 = txtNum2.value;
+		if (sw == 1) {
+			txtNum3.value = plus(n1,n2);
+		}
+		else if (sw == 2) {
+			txtNum3.value = minus(n1,n2);
+		}
+		else if (sw == 3) {
+			txtNum3.value = multi(n1,n2);
+		}
+		else if (sw == 4) {
+			txtNum3.value = divide(n1,n2);
+		}
+	}
+  </script>
+ </head>
+ <body>
+  <input type="number" id="txtNum1">
+  <input type="number" id="txtNum2">
+  <hr/>
+  <button onclick="main(1)"> + </button>
+  <button onclick="main(2)"> - </button>
+  <button onclick="main(3)"> * </button>
+  <button onclick="main(4)"> / </button>
+  <hr/>
+  <input type="number" id="txtNum3">
+ </body>
+</html>

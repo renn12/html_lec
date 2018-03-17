@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  
+  <title>Document</title>
+  <style>
+		table{width:500px}
+		table,tr,td,th{
+		border:1px solid blue;
+		border-collapse:collapse;}
+  </style>
+  <script>
+	function main(sname,skor,seng)
+	{
+		var tag="";
+		var STD= new STUDENT(sname, skor,seng);
+		tby.innerHTML+=STD.showHTML();
+
+		/* showHTML() 없을 때
+				tag+="<tr><td>";
+				tag+=STD.sname;
+				tag+="</td><td>";
+				tag+=STD.skor;
+				tag+="</td><td>";
+				tag+=STD.seng;
+				tag+="</td><td>";
+				tag+=STD.total();
+				tag+="</td><td>";
+				tag+=STD.average();
+				tag+="</td></tr>";
+		
+				tby.innerHTML+=tag;
+		*/
+		
+	}
+
+	function STUDENT(sname,skor, seng)
+	{
+		this.sname=sname;
+		this.skor=parseInt(skor);
+		this.seng=parseInt(seng);
+
+		this.total=function (){return this.skor+this.seng};
+		this.average=function(){return (this.skor+this.seng)/2};
+		this.showHTML=function(){return 	"<tr><td>"+this.sname+"</td><td>"+this.skor+"</td><td>"+this.seng+"</td><td>"+this.total()+"</td><td>"+this.average()+"</td></tr>";
+		
+		}
+		
+	}
+  </script>
+ </head>
+ <body>
+  성명:<input type="text" id="txtName">
+  국어:<input type="text" id="txtKor">
+  영어:<input type="text" id="txtEng">
+  <button onclick="main(txtName.value, txtKor.value,txtEng.value)">Enter</button>
+  <hr>
+ <table id="tbl">
+	<tr><th>성명</th><th>국어</th><th>영어</th><th>총점</th><th>평균</th></tr>
+	<tbody id="tby">
+		
+	</tbody>
+
+ </table>
+ </body>
+</html>

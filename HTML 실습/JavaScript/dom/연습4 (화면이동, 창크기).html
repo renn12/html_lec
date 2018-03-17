@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	var w;
+	function openWindow() {
+		w = window.open(' ', ' ', 'width=200, height=100');
+		w.document.write("<p>오늘 다음과 같은 상품을 싸게 팝니다.</p>");
+		w.moveTo(0,0);
+	}
+	function moveWindow() {
+		w.moveBy(10,10);
+		w.focus();
+	}
+
+	function maxopen(url, winattributes) {
+		var maxwindow = window.open(url, "", winattributes);
+		maxwindow.moveTo(0,0);
+		maxwindow.resizeTo(screen.availWidth, screen.availHeight);
+	}
+
+	function replace() {
+		location.replace("http://google.com");
+	}
+
+	
+  </script>
+ </head>
+ <body>
+  <input type="button" value="윈도우 생성" onclick="openWindow()"><br/>
+  <input type="button" value="윈도우 생성" onclick="moveWindow()">
+  <a href="#" onclick="maxopen('http://google.com', 'resize=1, scrollbars=1, status=1'); return false">전체화면보기</a>
+  <a href="#" onclick="replace()">이동하기</a>
+  <script>
+	for(var key in navigator) {
+		value = navigator[key];
+		document.write(key + ": " + value + "<br/>");
+	}
+	</script>
+ </body>
+</html>

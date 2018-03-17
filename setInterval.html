@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<script>
+			var tog = 0;
+			var num = 10000;
+			var repeat;
+			function main() {
+				if(radio1.checked == true) num -= 50;
+				else if(radio2.checked == true) num -= 200;
+				else alert("라디오버튼을 선택하세요.");
+				document.getElementById("div1").innerHTML = num;
+				
+				if (num <= 0) {
+					alert("완료");
+					stop();
+				}
+			}
+			function start() {
+				if (tog == 0) {
+					if(radio1.checked == true || radio2.checked == true) {
+						tog = 1;
+						repeat = setInterval(main, 100);
+					}
+					else {
+						main();
+					}
+				}
+				
+			}
+			function stop() {
+				tog = 0;
+				clearInterval(repeat);
+			}
+		</script>
+		(50)<input type="radio" id="radio1" name="rd">
+		(200)<input type="radio" id="radio2" name="rd">
+		<button onclick="start()">실행</button>
+		<button onclick="stop()">취소</button>
+		<div id="div1">10000</div>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script>
+			var main = function() {
+				var num = [];
+				var k = 0;
+				for(i = 0; i < txt1.value; i++) num[i] = i + 1;
+				while(k < num.length) {
+					var temp = 0;
+					for(i = 1; i < num[k]; i++) {
+						var pp = num[k] % i;
+						if(pp == 0) temp++;
+					}
+					if(temp != 1) num.splice(k, 1);
+					else k++;
+				}
+				var result = "";
+				for(i = 0; i < num.length; i++) result += num[i]+"<br/>";
+				document.getElementById("div1").innerHTML = result;
+			}
+		</script>	
+	</head>
+	<body>
+		<h1>소수 판별하기</h1>
+		<input type="text" id="txt1" placeholder="최대값 입력">
+		<button onclick="main()">Click</button>
+		<div id="div1"></div>
+	</body>
+</html>

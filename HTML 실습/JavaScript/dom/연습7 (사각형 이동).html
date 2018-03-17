@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	var myInt;
+	function whichButton(event) {
+		var c = event.keyCode;
+		if(c==37) move(-50,0);
+		if(c==38) move(0,50);
+		if(c==39) move(50,0);
+		if(c==40) move(0,-50);
+		clearInterval(myInt);
+	}
+	function move(x, y) {
+		var locX = parseInt(document.all["myLay"].style.left);
+		var locY = parseInt(document.all["myLay"].style.top);
+		document.all["myLay"].style.left = locX + x + "px";
+		document.all["myLay"].style.top = locY - y + "px";
+	}
+	function startInt() {
+		myInt = setInterval(function(){move(50,0)}, 1000);
+	}
+  </script>
+ </head>
+ <body onkeyup="whichButton(event)">
+ <button onclick="startInt()">interval 시작</button>
+ <button onclick="clearInterval(myInt)">interval 중지</button>
+ <script>
+	console.log(document.all);
+ </script>
+  <div id="myLay" style="position:absolute;top:100px;left:100px;width:80px;height:80px;background-color:#ff6493;">레이어</div>
+ </body>
+</html>

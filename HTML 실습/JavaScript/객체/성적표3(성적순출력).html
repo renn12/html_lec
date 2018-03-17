@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>성적순으로 출력하기</title>
+  <script>
+  var sArr =[];
+
+  function main(tname,tkor,teng)
+  {
+	  sArr.push(new Student(tname,tkor,teng));
+	  //alert(sArr[0].total());
+	//배열sArr 에  Student 객체 생성해서  넣기
+	//배열 sArr 정렬하기 (총첨 total() 기준)
+	for (var i in sArr){
+		sArr[i].index = parseInt(i)+1;
+	}
+
+	sArr.sort( function(a, b) {return b.total() - a.total()} );
+	for (var i in sArr){
+		sArr[i].rank = parseInt(i)+1;
+	}
+	sArr.sort( function(a, b) {return a.index - b.index} );
+	table1.innerHTML=makeTag(sArr);
+
+  }
+  function Student(name,kor,eng)
+  {
+	this.name = name;
+	this.kor = kor;
+	this.eng = eng;
+	this.total = function () {
+		return parseInt(this.kor)+parseInt(this.eng);
+	}
+	this.average = function () {
+		return (parseInt(this.kor)+parseInt(this.eng))/2;
+	}
+	  //속성 : name, kor, eng
+	  //method: total() , average()
+  }
+  function makeTag(arr)
+  {
+	 //alert(arr.length);
+	 var tag="<tr><td>순위</td><td>성명</td><td>국어</td><td>영어</td><td>총점</td><td>평균</td></tr>";
+	 for (i=0;i<arr.length ;i++ ) {
+		tag += "<tr><td>"+arr[i].rank+"</td><td>"+arr[i].name+"</td><td>"+arr[i].kor+"</td><td>"+arr[i].eng+"</td><td>"+arr[i].total()+"</td><td>"+arr[i].average()+"</td></tr>";
+	 }
+	 //배열에 들어있는 학생객체의 name, kor, eng, total(), average()를 HTML 
+	 // table tag 로 Marking 하기 (for in  구문  또는 for 구문 사용)
+	  return tag;
+  }
+
+  </script>
+ </head>
+ <body>
+
+  name:<input type="text" id="sname">
+  kor:<input type="text" id="skor">
+  eng<input type="text" id="seng">
+ <input type="button" value=enter onclick="main(sname.value,skor.value,seng.value)">
+ <hr>
+  <table id="table1" border="1">
+
+  </table>
+
+ </body>
+</html>

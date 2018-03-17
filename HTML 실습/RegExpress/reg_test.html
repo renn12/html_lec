@@ -1,0 +1,113 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+  <SCRIPT LANGUAGE="JavaScript">
+  <!--
+	
+	/*
+	* (정규식, 체크할 스트링 array)
+	* 정규식을 뿌려주고, array의 element들을 입력받은 정규식에 적합한지 판단하여
+	* 결과를 String으로 돌려준다.
+	*/
+	function checkReg(re, tests){
+		var res = "<b>" + re.toString() +"</b>";
+		res += "<UL>";
+		for (var i=0; i< tests.length; i++){
+			var result ="";
+			if (re.test(tests[i])){
+				result = tests[i].replace(re, function (str){ 
+                        return "<span style=\"background-color:#00ff66;\"><b>" + str  + "</b></span>";
+					} ) + "<font color=\"green\"><b>ⓥ</b></font>";
+				var remembered = re.exec(tests[i]);
+				if (remembered != null && remembered.length > 1){
+					for (var j=1; j< remembered.length; j++){
+						result += "<br>" + j +"th :"+ remembered[j]; 
+					}
+				}
+			}else{
+				result = tests[i] + "<font color=\"red\"><i>ⓘ</i></font>";
+			}
+			res +="<LI>"+ result + "<br>";
+		}
+		res +="</UL>";
+		return res;
+	}
+
+	function showRegExp(){
+		var flags = "";
+		var reg;
+		try{
+			flags += document.getElementById("global").checked?"g":"";
+			flags += document.getElementById("ignore_case").checked?"i":"";
+			flags += document.getElementById("multi-line").checked?"m":"";
+			reg = new RegExp(document.getElementById("reg").value.replace(/^\/|\/$/g, ""), flags);
+			reg.test("");
+		}catch(e){
+			document.getElementById("result").innerHTML = e;
+			return ;
+		}
+		document.getElementById("result").innerHTML = checkReg(reg, document.getElementById("str").value.split(/\r\n/g));
+	}
+  //-->
+  </SCRIPT>
+  <STYLE>
+<!-- 
+	body,table,input {font-size:9pt;}		/* body,table,input 태그에 글자 크기, 색상 지정 */
+
+	textarea {color:#009933;	 				/* textarea 글자 색상 지정 */
+	height:100px}									/* textarea 높이 지정 */
+
+	.tb {border-style:double;				/* 테두리선 모양 지정 */ 
+	border-color:#DB7100;					/* 테두리선 색상 지정 */ 
+	margin-top:40px;							/* 브라우저와의 위쪽 간격 지정 */
+	margin-left:30px;}							/* 브라우저와의 왼쪽 간격 지정 */
+
+	.re {color:#CC3300;}						/* 글자 색상 지정 */
+
+	.box {border:1 dotted orange;			/* 테두리 두께와 선모양, 색상 지정 */
+	color:#3366CC;								/* 글자 색상 지정 */
+	height:20px;}									/* 높이 지정 */	
+
+	.td1 {width:100px;							/* 넓이 지정 */ 
+	background-color:#3399ff;			/* 배경색상 지정 */ 
+	padding:5px}									/* 문단 안쪽의 여백 지정 */ 
+
+	.td2 {						/* 넓이 지정 */ 
+	background-color:#3399ff;			/* 배경색상 지정 */
+	padding:3px}									/* 문단 안쪽의 여백 지정 */ 
+
+	A:link, A:visited {color:#6633CC; text-decoration:none}	/* 하이퍼링크의 기본링크와 방문 링크의 색상과 모양 지정 */ 
+
+	A:hover {color:#66FF66; text-decoration:underline}	/* 하이퍼링크의 롤오버 링크의 색상과 모양 지정 */ 
+-->
+</STYLE>
+
+
+ </HEAD>
+
+ <BODY>
+  <TABLE WIDTH="850" class="tb">
+<TR>
+	<TD class="td1" valign="top">정규식</TD>
+	<TD class="td2"><input type="text" id="reg" onpropertychange="showRegExp()" size=112></TD>
+</TR>
+<TR>
+	<TD class="td1" valign="top">flag</TD>
+	<TD class="td2"><input type="checkbox" id="global" onclick="showRegExp()"><label for="global">global</label><input type="checkbox" id="ignore_case" onclick="showRegExp()"><label for="ignore_case">ignore case</label><input type="checkbox" id="multi-line" onclick="showRegExp()"><label for="multi-line">multi line</label></TD>
+</TR>
+<TR>
+	<TD class="td1" valign="top">테스트 문자열</TD>
+	<TD class="td2"><textarea id="str" cols=95  onpropertychange="showRegExp()"></textarea></TD>
+</TR>
+<TR>
+	<TD class="td1" valign="top">테스트 결과</TD>
+	<TD class="td2"><div width=300 id="result"></div></TD>
+</TR>
+ </BODY>
+</HTML>

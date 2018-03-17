@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>lotto 3.0</title>
+	</head>
+	<body>
+		<script>
+			function main() {
+				var arr45 = [];
+				var arr6 = [];
+				for (i = 0; i < 45; i++) arr45[i] = i + 1;
+				var xx = exception.value;
+				xx = xx.split(",");
+				for (i = 0; i<xx.length; i++) {
+					for(j = 0; j<arr45.length; j++) {
+						if (arr45[j] == xx[i]) arr45.splice(j,1);
+					}
+				}
+				arr45 = reArray(arr45);
+				for (i = 0; i < 6; i++) {
+					var dex = parseInt(Math.random()*arr45.length);
+					arr6[i] = arr45[dex];
+					arr45.splice(dex, 1);
+				}
+				arr6.sort(function(a,b){return a-b});
+				document.getElementById("outp").innerHTML = arr6;
+			}
+			function reArray(arr) {
+				var i = 0;
+				var newArray = [];
+				while(arr.length > 0) {
+					var x = parseInt(Math.random()*arr.length);
+					newArray[i] = arr[x];
+					i++;
+					arr.splice(x,1);
+				}
+				return newArray;
+			}
+		</script>
+		<textarea id="exception" rows="4" cols="50" placeholder="제외할 번호 입력 [ex)1,4,16,3,22]" style="padding:5px;resize:none;"></textarea><br/>
+		<button onclick="main()" style="margin:5px;width:200px;height:40px;">Click</button>
+		<div id="outp" style="width:300px;border:1px solid;padding:5px;font-size:20px;">제외할 번호 입력후 버튼클릭</div>
+
+
+	</body>
+</html>

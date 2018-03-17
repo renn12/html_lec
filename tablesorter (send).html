@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"><title>jQuery Tablesorter</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jquery.tablesorter.js"></script>
+		<script>
+			var stArr = [];
+			var main = function(name, kor, eng) {
+				var dex = stArr.length;
+				stArr.push(new Student(name, kor, eng));
+				stArr[dex].index = dex + 1;
+				stArr.sort(function(a,b){return b.total()-a.total();});
+				for(var i in stArr) stArr[i].rank = parseInt(i) + 1;
+				stArr.sort(function(a,b){return a.index-b.index});
+				document.getElementById("tby").innerHTML=makeTable(stArr);
+				make();
+			}
+			var rand = function() {
+				var name = "student" + parseInt(Math.random()*100);
+				var kor = parseInt(Math.random()*100);
+				var eng = parseInt(Math.random()*100);
+				main(name, kor, eng);
+			}
+			var makeTable = function(arr) {
+				var tag = "";
+				for(var i in arr) {
+					tag += "<tr><td>"+arr[i].rank+"</td><td>"+arr[i].name+"</td><td>"+arr[i].kor+"</td><td>"+arr[i].eng+"</td><td>"+arr[i].total()+"</td><td>"+arr[i].average()+"</td></tr>";
+				}
+				return tag;
+			}
+			var Student = function(name, kor, eng) {
+				this.name = name;
+				this.kor = parseInt(kor);
+				this.eng = parseInt(eng);
+				this.total = function() {
+					return this.kor + this.eng;
+				}
+				this.average = function() {
+					return this.total()/2;
+				}
+			}
+
+			$(document).ready(function(){
+				$("#myTable").tablesorter();
+				$("button").click(function(){
+					$("#myTable").trigger("update");
+				});
+				$("th").click(function(){
+					$("th").css("background-color", "white")
+					$(this).css("background-color", "lightblue");
+				});
+			});
+		</script>
+		<style>
+			table,tr,th,td {
+				border:1px solid lightblue; 
+				border-collapse:collapse;
+				text-align:center;
+			}
+			.tablesorter {
+				width: 500px;
+				margin-top: 5px;
+			}
+			#tby tr:nth-child(odd){
+				background-color:lightyellow;
+			}
+			input {
+				width:80px;
+			}
+		</style>
+	</head>
+	<body>
+		이름: <input type="text" id="txt1">
+		국어: <input type="text" id="txt2">
+		영어: <input type="text" id="txt3">
+		<button onclick="main(txt1.value, txt2.value, txt3.value)" id="btn1">입력</button>
+		<button id="btn2" onclick="rand()">sample</button>
+		<table id="myTable" class="tablesorter"> 
+			<thead>
+				<tr>
+					<th>순위</th>
+					<th>이름</th>
+					<th>국어</th>
+					<th>영어</th>
+					<th>총점</th>
+					<th>평균</th>
+				</tr>
+			</thead>
+			<tbody id="tby">
+			</tbody> 
+		</table>
+	</body>
+</html>

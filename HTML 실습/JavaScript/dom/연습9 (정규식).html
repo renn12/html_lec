@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function checkNumeric(elem, msg) {
+		var exp = /^[0-9]+$/;
+		if (elem.value.match(exp)) {
+			return true;
+		} else {
+			alert(msg);
+			elem.focus();
+			return false;
+		}
+	}
+	function checkText(elem, msg) {
+		var exp = /^[a-zA-Z]+$/;
+		if (elem.value.match(exp)) {
+			return true;
+		} else {
+			alert(msg);
+			elem.focus();
+			return false;
+		}
+	}
+	function checkSelection(elem, msg) {
+		if(elem.value == 0) {
+			alert(msg);
+			elem.focus();
+			return false;
+		} else {
+			return true;
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<form>
+		전화번호 (-없이 입력) : <input type="text" id="phone"/>
+		<input type="button" onclick="checkNumeric(document.getElementById('phone'), '숫자만 입력하세요.')" value="확인" />
+		이름 : <input type="text" id="nam"/>
+		<input type="button" onclick="checkText(document.getElementById('nam'), '알파벳만 입력하세요.')" value="확인" />
+	</form>
+
+	<form>
+	과일선택 <select id="fruits" class="required">
+	<option value="0">선택하세요</option>
+	<option value="1">사과</option>
+	<option value="2">배</option>
+	<option value="3">바나나</option>
+	</select>
+	<input type="button" onclick="checkSelection(document.getElementById('fruits'), '하나를 선택하여야 합니다.')" value='확인'/>
+	</form>
+ </body>
+</html>

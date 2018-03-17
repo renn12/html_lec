@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<script>
+			var arr = [4, 34, 5, 33, 21, 16, 74];
+			function sort1() {
+				arr.sort();
+				document.getElementById("area").innerHTML=arr;
+			}
+			function sort2() {
+				arr.sort(function(a,b){return a-b});
+				document.getElementById("area").innerHTML = arr;
+			}
+			function sort3() {
+				arr.sort(function(a,b){return b-a});
+				document.getElementById("area").innerHTML = arr;
+			}
+		</script>
+		
+		<div>기존 배열: [4, 34, 5, 33, 21, 16, 74]</div>
+		가나다순 - <button onclick="sort1()">sort()</button><br/>
+		숫자 오름차순 - <button onclick="sort2()">sort(function(a,b){return a-b})</button><br/>
+		숫자 내림차순 - <button onclick="sort3()">sort(function(a,b){return b-a})</button>
+		<div id="area"></div>
+		
+	</body>
+
+</html>

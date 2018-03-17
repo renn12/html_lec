@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+     <style>
+         body {
+             font: 18px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+         }
+         button {
+             height:25px;
+         }
+         textarea {
+             resize:none;
+             width:70%;
+         }
+         fieldset {
+             margin-bottom:5px;
+         }
+     </style>
+     <script>
+         var cityDog = 6;
+         function welcome() {
+	     var batt = ["●●●●●●","○●●●●●","○○●●●●","○○○●●●","○○○○●●","○○○○○●"]
+             if (cityDog != 0) {
+                 cityDog -= 1;
+                 welc.innerHTML = batt[cityDog];
+             }
+             else {
+                 welc.innerHTML = "Music, Photo Gallery에 오신 것을 환영합니다.";
+                 clearInterval(repeat);
+             }
+         }
+     </script>
+ </head>
+ <body>
+  <fieldset>
+	  <legend>Welcome</legend>
+	  <h3 id="welc"></h3>
+      <script>
+          welc.innerHTML = "○○○○○○";
+          var repeat = setInterval(welcome, 200);
+      </script>
+  </fieldset>
+  <fieldset>
+    <legend>게시판 글남기기</legend>
+    <form>
+    <table>
+    <tr><td>이름</td><td><input type="text"></td></tr>
+    <tr><td>Password</td><td><input type="password"></td></tr>
+    <tr><td>전화번호</td><td><input type="tel"></td></tr></table>
+    <textarea rows="4"></textarea><br/><br/>
+    <button type="submit">글남기기</button>
+    <button type="reset">초기화</button>
+    </form>
+  </fieldset>
+  <fieldset>
+  <legend>게시판</legend>
+	<div>
+		<span style="float:right;font-size:12px;">2017.2.10</span>
+		작성자 : ㅇㅇㅇ<br/>
+		안녕하세요
+	</div>
+  </fieldset>
+ </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	var f2="";
+	function main() {
+		//alert(f1);
+		f2 = function () {
+			area.innerHTML += "This is f2";
+		}
+		f2();
+	}
+	function f1() {
+		f2();
+		//area.innerHTML = "this is function f1";
+	}
+  </script>
+ </head>
+ <body>
+  <button onclick="main()">Enter</button>
+  <button onclick="f1()">Enter2</button>
+  <div id="area"></div>
+ </body>
+</html>

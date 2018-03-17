@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+ 
+ </HEAD>
+
+ <BODY>
+<CENTER><H1>[ 구구단 출력표]</H1></CENTER>
+<UL>
+	<LI>Table : bgolor = GREEN : cellpadding = 5 
+    <LI>TD : bgcolor = YELLOW 
+	
+</UL>
+<FONT SIZE="" COLOR=""  face=굴림></FONT>
+<table bgcolor=green cellpadding=5>
+<tr bgcolor= yellow width= 70 height=30 align=center><td >2단</td>
+<td>3단</td>
+<td>4단</td>
+<td>5단</td>
+<td>6단</td>
+<td>7단</td>
+<td>8단</td>
+<td>9단</td></tr>
+
+<CENTER><SCRIPT LANGUAGE="JavaScript">
+<!--
+	
+	for (i=1;i<10 ;i++ )
+	{
+		document.write("<tr>")
+
+		for (j=2;j<10 ;j++ )
+		{
+			document.write("<td bgcolor= yellow width= 70 height=30 >")
+			var mul = j*i
+			
+			document.write (j +" * " + i + " = " + mul)
+			document.write("</td>")
+		}
+			document.write("</tr>")
+	}
+	
+//-->
+</SCRIPT></CENTER>
+		</table>
+
+ </BODY>
+</HTML>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>성적표 객체</title>
+  <script>
+	function main(sname, skor, seng) {
+		var STD = new STUDENT(sname, skor, seng);
+		//var tag = "<tr><td>"+STD.sname+"</td><td>"+STD.skor+"</td><td>"+STD.seng+"</td><td>"+STD.total()+"</td><td>"+STD.average()+"</td></tr>";
+		//tb1.innerHTML+=tag;
+		STD.stag();
+	}
+	function STUDENT(sname, skor, seng) {
+		this.sname = sname;
+		this.skor = skor;
+		this.seng = seng;
+		this.total = function (){
+			return parseInt(skor) + parseInt(seng);
+		}
+		this.average = function (){
+			return (parseInt(skor)+parseInt(seng))/2;
+		}
+		this.stag=function (){
+			tb1.innerHTML+="<tr><td>"+this.sname+"</td><td>"+this.skor+"</td><td>"+this.seng+"</td><td>"+this.total()+"</td><td>"+this.average()+"</td></tr>";
+		}
+	}
+  </script>
+  <style>
+	table {width:400px;text-align:center;margin-top:4px;border-collapse: collapse;}
+  </style>
+ </head>
+ <body>
+	<fieldset>
+		<legend>성적입력</legend>
+		성명 : <input type="text" id="tx1"> 
+		국어 : <input type="text" id="tx2"> 
+		영어 : <input type="text" id="tx3"> 
+		<input type="submit" onclick="main(tx1.value, tx2.value, tx3.value)">
+	</fieldset>
+
+  <table id="tb1" border="1"></table>
+  <script>
+	x0 = "<tr><th>성명</th><th>국어</th><th>영어</th><th>합계</th><th>평균</th></tr>";
+	tb1.innerHTML=x0;
+  </script>
+ </body>
+</html>

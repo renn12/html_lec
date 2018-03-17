@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+	function Point(xpos, ypos) {
+		this.x = xpos;
+		this.y = ypos;
+	}
+	Point.prototype.getDistance = function() {
+		return Math.sqrt(this.x * this.x + this.y * this.y);
+	};
+
+	var p1 = new Point(10, 20);
+	alert(p1.getDistance());
+  </script>
+ </body>
+</html>

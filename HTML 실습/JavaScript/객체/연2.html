@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>#area div{background-color:lightblue;height:30px;width:200px;margin-top:2px;}</style>
+  <script>
+	var dex = 0;
+	var arr = [];
+	function main(a1, a2) {
+		this.o1 = parseInt(a1);
+		this.o2 = parseInt(a2);
+		this.sum = function() {
+			return this.o1 + this.o2;
+		}
+	}
+	function main2(b1, b2) {
+		arr[dex] = new main(b1, b2);
+		area.innerHTML += "<div>" + arr[dex].sum() + "</div>";
+		dex++;
+	}
+	function main3(ee) {
+		area2.innerHTML += "<hr/>" + arr[ee].sum();
+	}
+  </script>
+ </head>
+ <body>
+  <div id="area">
+	<input type="text" id="txt1">
+	<input type="text" id="txt2">
+	<button onclick="main2(txt1.value, txt2.value)">enter</button>
+  </div>
+  <div id="area2">
+	<input type="text" id="txt3">
+	<button onclick="main3(txt3.value)">enter</button>
+  </div>
+ </body>
+</html>

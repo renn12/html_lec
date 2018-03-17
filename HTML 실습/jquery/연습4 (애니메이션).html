@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src="jquery.js"></script>
+ </head>
+ <body>
+  <button id="btn1">Show it</button>
+  <button id="btn3">Hide it</button>
+  <button id="btn2">toggle</button>
+  <button id="btn5">Left</button>
+  <button id="btn4">Right</button>
+  <button id="btn6">stop</button>
+  <button id="btn7">fade in</button>
+  <button id="btn8">fade out</button>
+  <button id="btn9">slideUp</button>
+  <button id="btn10">slideDown</button>
+  <button id="btn11">chain</button>
+  <br/>
+  <img id="dog" src="http://img.naver.net/static/www/u/2013/0731/nmms_224940510.gif" style="display: none;position: relative;"/>
+  <script>
+	$(document).ready(function(){
+		$("#btn1").click(function(){
+			$("#dog").show("slow");
+		});
+		$("#btn2").click(function(){
+			$("#dog").toggle("fast");
+		});
+		$("#btn3").click(function(){
+			$("#dog").hide("slow");
+		});
+		$("#btn4").click(function(){
+			$("#dog").animate({left: "+=100px"}, 200);
+		});
+		$("#btn5").click(function(){
+			$("#dog").animate({left: "-=100px"}, 200);
+		});
+		$("#btn6").click(function(){
+			$("#dog").stop();
+		});
+		$("#btn7").click(function(){
+			$("#dog").fadeIn("slow");
+		});
+		$("#btn8").click(function(){
+			$("#dog").fadeOut("slow");
+		});
+		$("#btn9").click(function(){
+			$("#dog").slideUp("slow");
+		});
+		$("#btn10").click(function(){
+			$("#dog").slideDown("slow");
+		});
+		$("#btn11").click(function(){
+			$("#dog").slideDown().fadeOut().fadeIn();
+		});
+	});
+
+  </script>
+ </body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	table,tr,td {}
+  </style>
+  <script>
+	function main() {
+		//alert("성공");
+		var sname, skor, seng;
+		sname=txtName.value;
+		skor=txtKor.value;
+		seng=txtEng.value;
+		var tag="";
+		
+		tag += "<tr>";
+		tag += "<td>";
+		tag += sname;
+		tag += "</td>";
+		tag += "<td>";
+		tag += skor;
+		tag += "</td>";
+		tag += "<td>";
+		tag += seng;
+		tag += "</td>";
+		tag += "</tr>";
+		//area.innerHTML+="<table><tr><td>"+sname+"</td><td>"+skor+"</td><td>"+seng+"</td></tr></table>";
+		//alert(tag);
+		console.log("tag=>"+tag);
+		tby.innerHTML += tag;
+	}
+  </script>
+ </head>
+ <body>
+  성명: <input type="text" id="txtName">
+  국어: <input type="text" id="txtKor">
+  영어: <input type="text" id="txtEng">
+  <button onclick="main()">Enter</button>
+  <table id="tbl">
+	<tr><th>성명</th><th>국어</th><th>영어</th></tr>
+	<tbody id="tby">
+	</tbody>
+
+  </table>
+
+ </body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	table {width: 600px;}
+	#tby tr:nth-child(odd) {background-color:lightblue;}
+  </style>
+  <script>
+	var sArr = [];
+	function main(num, name, kor, math, eng) {
+		var dex = sArr.length;
+		sArr.push(new STD(num, name, kor, math, eng));
+		sArr[dex].index = dex + 1;
+		selSort(5);
+		for (var i in sArr){
+			sArr[i].rank = parseInt(i)+1;
+		}
+		selSort(7);
+		//alert(sArr[0].total());
+		//alert(sArr[0].kor);
+
+		tby.innerHTML = sTag(sArr);
+	}
+	function STD(num, name, kor, math, eng) {
+		this.num = num;
+		this.name = name;
+		this.kor = parseInt(kor);
+		this.math = parseInt(math);
+		this.eng = parseInt(eng);
+		this.total = function(){return this.kor + this.math + this.eng};
+		this.average = function() {return parseInt(this.total()/3)};
+	}
+	function sTag(arr) {
+		var tag = "";
+		for(var x in arr) {
+			tag += "<tr><td>"+arr[x].rank+"</td><td>"+arr[x].num+"</td><td>"+arr[x].name+"</td><td>"+arr[x].kor+"</td><td>"+arr[x].math+"</td><td>"+arr[x].eng+"</td><td>"+arr[x].total()+"</td><td>"+arr[x].average()+"</td></tr>";
+		}
+		return tag;
+	}
+	function selSort(subject) {
+		switch(subject) {
+			case 1:
+			sArr.sort(function(a,b){return a.num-b.num});
+			break;
+			case 2:
+			sArr.sort(function(a,b){return b.kor-a.kor});
+			break;
+			case 3:
+			sArr.sort(function(a,b){return b.math-a.math});
+			break;
+			case 4:
+			sArr.sort(function(a,b){return b.eng-a.eng});
+			break;
+			case 5:
+			sArr.sort(function(a,b){return b.total()-a.total()});
+			break;
+			case 6:
+			sArr.sort(function(a,b){return b.average()-a.average()});
+			break;
+			case 7:
+			sArr.sort(function(a,b){return a.index-b.index});
+			break;
+		}
+		tby.innerHTML = sTag(sArr);
+	}
+	function rand() {
+		var num = "2017"+parseInt(Math.random()*1000);
+		var name = "학생"+parseInt(Math.random()*100);
+		var kor = parseInt(Math.random()*100);
+		var math = parseInt(Math.random()*100);
+		var eng = parseInt(Math.random()*100);
+		main(num, name, kor, math, eng);
+	}
+  </script>
+ </head>
+ <body>
+	학번:<input type="text" id="sNum">
+	이름:<input type="text" id="sName">
+	국어:<input type="text" id="sKor">
+	수학:<input type="text" id="sMath">
+	영어:<input type="text" id="sEng">
+	<button onclick="main(sNum.value, sName.value, sKor.value, sMath.value, sEng.value)">확인</button>
+	<button onclick="rand()">Sample Data</button>
+	<hr>
+  <table border="1">
+	<tr>
+		<th>순위</th>
+		<th><a href="javascript:selSort(1)">학번</a></th>
+		<th>이름</th>
+		<th><a href="javascript:selSort(2)">국어</a></th>
+		<th><a href="javascript:selSort(3)">수학</a></th>
+		<th><a href="javascript:selSort(4)">영어</a></th>
+		<th><a href="javascript:selSort(5)">총점</a></th>
+		<th><a href="javascript:selSort(6)">평균</a></th>
+	</tr>
+	<tbody id="tby"></tbody>
+  </table>
+ </body>
+</html>

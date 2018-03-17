@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>화면 구역 설정 태그</title>
+  
+ </head>
+ <body>
+  	<!--div/span 태그-->
+	<div style="background-color:red;">div 구역</div>
+	<span style="background-color:blue;">span 구역</span>
+
+	<!-- 테이블 태그 (표만들기) tr:행/td:열 -->
+	<table border="1" height="100" width="300">
+		<tr>
+			<td colspan="2">1.1</td>
+			<td>1.3</td>
+		</tr>
+		<tr>
+			<td rowspan="2">2.1</td>
+			<td>2.2</td>
+			<td>2.3</td>
+		</tr>
+		<tr>
+			<td colspan="2">3.2</td>
+		</tr>
+	</table><br/><br/>
+	<!-- 4행 4열 -->
+	<table border="1" height="100" width="300" style="border-collapse:collapse;">
+		<tr>
+			<td>1.1</td>
+			<td>1.2</td>
+			<td>1.3</td>
+			<td rowspan="3">1.4</td>
+		</tr>
+		<tr>
+			<td colspan="2">2.1</td>
+			<td>2.3</td>
+			
+		</tr>
+		<tr>
+			<td>3.1</td>
+			<td>3.2</td>
+			<td>3.3</td>
+		</tr>
+		<tr>
+			<td colspan="4">4.1</td>
+		</tr>
+	</table><br/>
+
+	<!-- 폼 컨트롤(Form Control) 태그 -->
+	<form method="post" action="admin.jsp">
+		
+	
+	ID : <input type="text" size="5" id="txt_id">
+	PW : <input type="password"><br>
+	성별 : 남<input type="radio" name="rd1"> 여<input type="radio" name="rd1"><br>
+	취미 : 테니스<input type="checkbox"> 탁구<input type="checkbox">	야구<input type="checkbox">
+	출생도시 : 
+	<select name="">
+		<option value="1" selected>서울
+		<option value="2">부산
+		<option value="3">대전
+		<option value="4">대구
+	</select>
+	<br>
+	자기소개 : <textarea name="" rows="10" cols="100"></textarea><br>
+	<input type="button" value="회원가입신청">
+	<input type="submit">
+	<input type="reset">
+	</form>
+ </body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script>
+			var sArr = [];
+			function main(name, kor, eng) {
+				var dex = sArr.length;
+				sArr.push(new STD(name, kor, eng));
+				sArr[dex].index = dex + 1;
+				sSort("total");
+				for(var i in sArr) sArr[i].rank = parseInt(i) + 1;
+				
+				if(rad1.checked == true) {
+					sSort("kor");
+				}
+				else if(rad2.checked == true) {
+					sSort("eng");
+				}
+				else if(rad3.checked == true) {
+					sSort("total");
+				}
+				else {
+					sSort("index");
+				}
+				//alert(a);
+				//alert(sArr[0].total());
+				//table1.innerHTML = stag(sArr);
+			}
+			function STD(name, kor, eng) {
+				this.name = name;
+				this.kor = kor;
+				this.eng = eng;
+				this.total = function(){
+					return parseInt(this.kor) + parseInt(this.eng);
+				}
+				this.average = function() {
+					return this.total()/2;
+				}
+			}
+			function stag(arr) {
+				var tag = "<tr><th>순위</th><th>이름</th><th>국어</th><th>영어</th><th>합계</th><th>평균</th></tr>";
+				for(var i in arr) {
+					tag += "<tr><td>"+arr[i].rank+"</td><td>"+arr[i].name+"</td><td>"+arr[i].kor+"</td><td>"+arr[i].eng+"</td><td>"+arr[i].total()+"</td><td>"+arr[i].average()+"</td></tr>";
+				}
+				return tag;
+			}
+			function sSort(subject) {
+				switch(subject) {
+					case "kor":
+						sArr.sort(function(a,b){return b.kor - a.kor});
+						break;
+					case "eng":
+						sArr.sort(function(a,b){return b.eng - a.eng});
+						break;
+					case "total":
+						sArr.sort(function(a,b){return b.total() - a.total()});
+						break;
+					case "index":
+						sArr.sort(function(a,b){return a.index - b.index});
+						break;
+				}
+				table1.innerHTML = stag(sArr);
+			}
+			function rand() {
+				var name = "학생" + parseInt(Math.random()*1000);
+				var kor = parseInt(Math.random()*100);
+				var eng = parseInt(Math.random()*100);
+				main(name, kor, eng);
+			}
+		</script>
+	</head>
+	<body>
+		name : <input type="text" id="sname">
+		kor : <input type="text" id="skor">
+		eng : <input type="text" id="seng">
+		<button onclick="main(sname.value, skor.value, seng.value)">Enter</button>
+		<button onclick="rand()">random</button>
+		<hr/>
+		<button onclick="sSort('kor')">국어 성적순</button>
+		<button onclick="sSort('eng')">영어 성적순</button>
+		<button onclick="sSort('total')">합계 성적순</button>
+		<hr/>
+		<input type="radio" name="sub" id="rad1" onclick="sSort('kor')">국어
+		<input type="radio" name="sub" id="rad2" onclick="sSort('eng')">영어
+		<input type="radio" name="sub" id="rad3" onclick="sSort('total')">합계
+		<input type="radio" name="sub" id="rad4" onclick="sSort('index')" checked>입력순
+		<hr/>
+		<table id="table1" border="1">
+		
+		</table>
+	</body>
+</html>

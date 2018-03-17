@@ -1,0 +1,36 @@
+<!DOCTYPE HTML >
+<HTML>
+<head>
+<script>
+	function gugu(){
+		var num = document.gugudan.num.value;
+		if(num >= 2 && num <=9)
+		{
+			var tag = "<table bgcolor='GREEN' cellpadding='5' border='1' width=100>";
+			for(i=1; i<10; i++)
+			{
+				tag = tag + "<tr bgcolor='yellow' align='center'><td>"+num + " * " + i + " = " + num*i+"</td></tr>";
+			}
+			tag += "</table>";
+			test.innerHTML = tag;
+		}
+		else
+		{
+			alert("잘못된 입력");
+		}
+	}
+
+</script>
+</head>
+<BODY>
+	<center>
+		<h1>[ 구구단 출력표 ]</h1>
+		몇단을 보시겠습니까? (2단~9단) 
+		<form name="gugudan">
+			<input type="text" name="num" size="10">
+			<input type="button" value="확인" onclick="gugu()">
+			<span id="test"></span>
+		</form>
+	</center>
+</BODY>
+</HTML>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	.high_light {background:Yellow;}
+	.high_light_0 {background:Yellow;}
+	.high_light_1 {background:Orange;}
+	.high_light_2 {background:Blue;}
+	.high_light_3 {background:Green;}
+	.high_light_4 {background:Red;}
+	</style>
+  <script type="text/javascript" src="jquery.js"></script>
+    <script>
+	$(document).ready(function(){
+		/*var array = [
+		{ name: 'Hanbit Media', link: 'http://hanb.co.kr' },
+		{ name: 'Naver', link: 'http://naver.com' },
+		{ name: 'Daum', link: 'http://daum.net' },
+		{ name: 'Paran', link: 'http://paran.com' }
+		];
+
+		$.each(array, function(index, item) {
+			//alert(item.name);
+			var output = '';
+
+			output += '<a href="' + item.link + '">';
+			output += '	<h1>' + item.name + '</h1>';
+			output += '</a>';
+
+			document.body.innerHTML += output;
+		});*/
+		$("#btn1").click(function(){
+			$('h1').addClass('high_light');
+		});
+		$("#btn2").click(function(){
+			$('h1').removeClass('high_light');
+		});
+		$('h1').each(function (index, item) {
+			$(this).addClass('high_light_' + index);
+		});
+		$("#btn3").click(function(){
+			$('h1').each(function(index, item){
+				$(this).removeClass('high_light_' + index);
+			});
+		});
+	});
+
+  </script>
+ </head>
+ <body>
+
+	<button id="btn3">removeClass</button>
+	<h1 class="high_light_0">item - 0</h1>
+	<h1>item - 1</h1>
+	<h1>item - 2</h1>
+	<h1>item - 3</h1>
+	<h1>item - 4</h1>
+	
+ </body>
+</html>

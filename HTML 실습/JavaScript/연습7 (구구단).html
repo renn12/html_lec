@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <script>
+  function main() {
+	var result = "<tr>";
+	for (i=2;i<=9 ;i++ ) {
+		result += "<th>"+i+"단"+"</th>";
+	}
+	result += "</tr>";
+	for (j=1;j<=9 ;j++ ) {
+		result += "<tr>";
+		for (i=2;i<=9 ;i++ ) {
+			result += "<td>"+i+"x"+j+"="+i*j+"</td>";
+		}
+		result += "</tr>";
+	}
+	tbl.innerHTML = result;
+  }
+	
+  </script>
+
+ </head>
+ <body>
+ <input type="button" onclick="main()" value="click"><br/>
+  <table id="tbl" border="1">
+
+  </table>
+ </body>
+</html>

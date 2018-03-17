@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function plus() {
+		var n1;
+		var n2;
+		var n3;
+		n1 = parseInt(txtNum1.value);
+		n2 = parseInt(txtNum2.value);
+		n3 = n1 + n2;
+		txtNum3.value = n3;
+	}
+	function minus() {
+		/*
+			작성일 : 2017.2.10
+			변수 n1, n2, n3 선언
+		*/
+		var n1, n2, n3; //변수 선언
+		//변수 초기화
+		n1 = 0;
+		n2 = 0;
+		n3 = 0;
+
+		n1 = parseInt(txtNum1.value);
+		n2 = parseInt(txtNum2.value);
+		n3 = n1 - n2;
+		txtNum3.value = n3;
+	}
+  </script>
+ </head>
+ <body>
+  <input type="text" id="txtNum1">
+  <input type="text" id="txtNum2"><hr/>
+  <input type="button" value=" + " onclick="plus()">
+  <input type="button" value=" - " onclick="minus()">
+  <hr/>
+  <input type="text" id="txtNum3">
+
+ </body>
+</html>
